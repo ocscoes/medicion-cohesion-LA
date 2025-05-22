@@ -1,0 +1,17 @@
+project:
+  type: book
+
+book:
+  title: "Medición Cohesión Social América Latina"
+  author: "Observatorio de Cohesión Social"
+  date: "2025"
+  chapters:
+    - index.qmd
+
+# bibliography: ocs.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
