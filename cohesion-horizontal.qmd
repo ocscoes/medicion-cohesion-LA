@@ -1,0 +1,362 @@
+## Cohesión Horizontal
+
+```{r Carga de librerías, include=FALSE}
+
+rm(list = ls())
+
+# Carga de librerías
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, summarytools, PerformanceAnalytics, psych, lavaan)
+
+# Configuraciones
+options(scipen=999)
+st_options(lang='es')
+options(OutDec=",")
+
+# 3. Funcióm media sin NAs
+## Descripción:
+## Simple función que omite el agumento de rm.na=TRUE.
+# Argumentos:
+## ... = Valores a promediar.
+mean_na <- function(...) {
+  mean_result <- mean(c(...), na.rm = TRUE)
+  if (is.nan(mean_result)) {
+    mean_result <- NA
+  }
+  return(mean_result)
+}
+
+load("input/data/datos_merge.Rdata")
+
+datos[] <- lapply(datos, function(col) {
+  col[is.nan(col)] <- NA
+  col
+})
+
+
+```
+
+La dimensión horizontal está dirigida hacia la cohesión dentro de la sociedad civil y posee indicadores subjetivos y objetivos. Los indicadores subjetivos incluyen la cohesión entre los ciudadanos individuales, así como la cohesión entre diferentes grupos sociales, mientras que los indicadores objetivos incluyen cómo se manifiesta la cohesión, a partir del grado de participación social de las personas. Se compone de 3 subdimensiones:
+
+1. Sentido de Pertenencia
+
+2. Calidad de Vida en el Vecindario
+
+3. Redes Sociales
+
+### Sentido de Pertenencia
+
+Busca medir el grado en que las personas se sienten parte de una comunidad política nacional, el orgullo de pertencer a ella, a sus instituciones, tradiciones y costumbres. 
+
+LAPOP incluye dos indicadores que miden orgullo sobre el sistema político y necesidad de apoyar el sistema político del país. Por su lado, WVS incluye preguntas sobre orgullo de pertenecer al país y sobre la posibilidad de luchar en un guerra por el país.
+
+```{r}
+#| label: descriptivos-pertenencia
+#| fig-cap: "Descriptivos indicadores de interés -- Sentido de Pertenencia"
+#| echo: false
+#| results: asis
+
+datos <- datos %>%
+  ungroup()
+
+datos_pertenencia <- datos %>%
+  select(c("pais", "wave", "b4", "b6", "voluntad_luchar_pais", "orgullonacional")) %>%
+  setNames(c("pais","wave", "Orgullo Sist. Político",
+             "Deber de apoyar Sist. Político",
+             "Voluntad de Luchar por el País", "Orgullo Nacional"))
+
+print(dfSummary(datos_pertenencia,
+          headings=FALSE,
+          style = "multiline",
+          plain.ascii = FALSE,
+          tmp.img.dir = 'tmp',
+          varnumbers = FALSE,
+          silent= TRUE,
+          split.by = NULL),
+      max.tbl.height = 500,
+      method = 'render',
+      # css.class = 'table',
+      silent = TRUE,
+      footnote = NA)
+```
+
+**Correlaciones**
+
+```{r}
+#| label: correlación pertenencia
+#| fig-cap: "Correlación indicadores de interés -- Sentido de Pertenencia"
+#| echo: false
+#| results: asis
+#| warning: false
+#| fig.width: 10
+#| fig.align: center
+
+
+chart.Correlation(datos_pertenencia %>%
+                    filter(pais!="Haiti") %>%
+                    select("Orgullo Sist. Político",
+             "Deber de apoyar Sist. Político",
+             "Voluntad de Luchar por el País", "Orgullo Nacional"))
+```
+Nota. La correlación se realizó con datos imputados.
+
+- Tengo dudas sobre si esto realmente conforma una única dimensión: Habría que eligir entre los indicadores referidos a sist. político (LAPOP) y los que refieren más bien a la nación (WVS)
+
+<!-- # ```{r echo=F} -->
+<!-- #  -->
+<!-- # datos_pertenencia %>% select(3:6) %>% KMO() -->
+<!-- # ``` -->
+<!-- #  -->
+<!-- # - El test KMO (0,54) sugiere que los indicadores no presentan una estructura factorial.  -->
+
+<!-- **Análisis Factorial Exploratorio** -->
+
+<!-- ```{r} -->
+
+<!-- datos_pertenencia %>% select(3:6) %>% -->
+<!--   fa.parallel(fa = "fa", n.iter = 100) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+
+<!-- m1 <- datos_pertenencia %>% select(3:6) %>% -->
+<!--   fa(nfactors = 2, fm = "ml") -->
+
+
+<!-- print(m1, cut = 0.4)  # Mostrar solo cargas ≥ 0.3 -->
+
+<!-- ``` -->
+
+
+### Calidad de vida en el vecindario
+
+LAPOP incluye una varios indicadores de calidad de vida urbana (principalmente, acceso a servicios básicos), así como seguridad objetiva y subjetiva. Por otro lado, la WVS incluye un indicador de confianza en los vecinos
+
+```{r}
+#| label: descriptivos-vecindario
+#| fig-cap: "Descriptivos indicadores de interés -- Calidad de Vida en el Vecindario"
+#| echo: false
+#| results: asis
+
+datos_vecindario <- datos %>%
+  select(c("pais", "wave", "aoj11", "vic1ext",
+              "sd2new2",
+              "sd3new2",
+           "sd5new2",
+              "sd6new2",
+           "confiar_vecinos")) %>%
+  setNames(c("pais","wave", "Percepción seguridad",
+             "Victima de delitos",
+             "Satisfacción vías",
+             "Satisfacción escuelas",
+             "Satisfacción servicios sanitarios",
+             "Satisfacción salud",
+             "Confianza en los vecinos"))
+
+print(dfSummary(datos_vecindario,
+          headings=FALSE,
+          style = "multiline",
+          plain.ascii = FALSE,
+          tmp.img.dir = 'tmp',
+          varnumbers = FALSE,
+          silent= TRUE,
+          split.by = NULL),
+      max.tbl.height = 500,
+      method = 'render',
+      # css.class = 'table',
+      silent = TRUE,
+      footnote = NA)
+```
+
+**Correlaciones**
+
+```{r}
+#| label: correlación-vecindario
+#| fig-cap: "Correlación indicadores de interés -- Calidad de Vida Urbana"
+#| echo: false
+#| results: asis
+#| warning: false
+#| fig.width: 10
+#| fig.align: center
+
+
+chart.Correlation(datos_vecindario %>%
+                    ungroup() %>%
+                    select(3:9))
+
+```
+
+<!-- # ```{r echo=F} -->
+<!-- #  -->
+<!-- # datos_vecindario %>% ungroup %>% select(3:9) %>% KMO() -->
+<!-- # ``` -->
+
+<!-- **Análisis Factorial Exploratorio** -->
+
+<!-- ```{r} -->
+
+<!-- datos_vecindario %>%  -->
+<!--   ungroup %>% -->
+<!--   select(3:9) %>% -->
+<!--   fa.parallel(fa = "fa", n.iter = 100) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+
+<!-- m2 <- datos_vecindario %>% -->
+<!--   ungroup() %>% -->
+<!--   select(3:9) %>% -->
+<!--   fa(nfactors = 2, fm = "ml", rotate= "varimax") -->
+
+
+<!-- print(m2, cut = 0.4) -->
+
+<!-- ``` -->
+
+
+**Calcular puntaje**
+
+```{r echo=F}
+datos <- datos %>%
+  group_by(wave,pais)%>%
+  mutate(sub_servicios_basicos = mean_na(mean_na(sd2new2),
+                                               mean_na(sd3new2),
+                                               mean_na(sd6new2),
+                                               mean_na(sd5new2)),
+         sub_confianza_vecinos = mean_na(mean_na(confiar_vecinos)),
+         sub_seguridad_urbana = mean_na(mean_na(vic1ext),
+                                        mean_na(aoj11)))
+```
+
+```{r}
+#| label: correlación-vecindario-subdimensiones
+#| fig-cap: "Correlación subdimensiones propuestas -- Calidad de Vida Urbana"
+#| echo: false
+#| results: asis
+#| warning: false
+#| fig.width: 10
+#| fig.align: center
+
+chart.Correlation(datos %>%
+                    ungroup() %>%
+                    select(c("sub_servicios_basicos",
+                             "sub_seguridad_urbana",
+                             "sub_confianza_vecinos")))
+
+```
+
+- Propuesta: ¿Dejar solo confianza vecinos y seguridad urbana?
+
+
+### Redes
+
+LAPOP incluye preguntas de participación cívica en organizaciones civiles, tales como organizaciones religiosas, escolares y vecinales, además de un indicador de confianza interpersonal. Por su lado, la WVS incluye indicadores de comportamiento "antisocial", que fueron invertidas para medir comportamiento cívico o prosocial. 
+
+```{r}
+#| label: descriptivos-redes
+#| fig-cap: "Descriptivos indicadores de interés -- Redes"
+#| echo: false
+#| results: asis
+
+datos <- datos %>%
+  ungroup()
+
+datos_redes <- datos %>%
+  select(c("pais", "wave", "it1", "cp6", "cp7", "cp8",
+           "aceptar_soborno", "evadir_impuestos", "recibir_beneficios", "evadir_transporte"
+           )) %>%
+  setNames(c("pais","wave", "Confianza Interpersonal",
+             "Reuniones religiosas", "Reuniones escuela", "Reuniones vecinales", "No aceptar sobornos",
+             "Pagar Impuestos", "Recibir beneficios solo si se necesitan",
+             "Pagar el transporte público"))
+
+print(dfSummary(datos_redes,
+          headings=FALSE,
+          style = "multiline",
+          plain.ascii = FALSE,
+          tmp.img.dir = 'tmp',
+          varnumbers = FALSE,
+          silent= TRUE,
+          split.by = NULL),
+      max.tbl.height = 500,
+      method = 'render',
+      # css.class = 'table',
+      silent = TRUE,
+      footnote = NA)
+```
+
+**Correlaciones**
+
+```{r}
+#| label: correlacion-redes
+#| fig-cap: "Correlación indicadores de interés -- Redes"
+#| echo: false
+#| results: asis
+#| warning: false
+#| fig.width: 10
+#| fig.align: center
+
+chart.Correlation(datos_redes %>%
+                    ungroup() %>%
+                    select(3:10))
+
+```
+<!-- # ```{r echo=F} -->
+<!-- #  -->
+<!-- #  -->
+<!-- # datos_redes %>% ungroup %>% select(3:11) %>% KMO() -->
+<!-- # ``` -->
+
+<!-- # ```{r} -->
+<!-- #  -->
+<!-- # datos_redes %>% -->
+<!-- #   ungroup %>% -->
+<!-- #   select(3:11, -7) %>% -->
+<!-- #   fa.parallel(fa = "fa", n.iter = 100) -->
+<!-- # ``` -->
+
+<!-- # ```{r} -->
+<!-- #  -->
+<!-- # m3 <- datos_redes %>% -->
+<!-- #   ungroup() %>% -->
+<!-- #   select(3:11, -7) %>% -->
+<!-- #   fa(nfactors = 3, fm = "ml") -->
+<!-- #  -->
+<!-- #  -->
+<!-- # print(m3, cut = 0.4) -->
+<!-- #  -->
+<!-- # ``` -->
+
+**Calcular puntaje**
+
+```{r echo=F}
+datos <- datos %>%
+  group_by(wave,pais)%>%
+  mutate(sub_sociabilidad = mean_na(mean_na(cp6,
+                                            cp7,
+                                            cp8)),
+         sub_confianza = mean_na(mean_na(it1)),
+         sub_prosocial = mean_na(mean_na(recibir_beneficios,
+                                         evadir_transporte,
+                                         evadir_impuestos,
+                                         aceptar_soborno)))
+```
+
+```{r}
+#| label: correlación-redes
+#| fig-cap: "Correlación subdimenesiones propuestas -- Redes Sociales y Sociabilidad"
+#| echo: false
+#| results: asis
+#| warning: false
+#| fig.width: 10
+#| fig.align: center
+
+chart.Correlation(datos %>%
+                    ungroup() %>%
+                    select(c("sub_sociabilidad",
+                             "sub_confianza",
+                             "sub_prosocial")))
+
+```
+
+- ¿Sacar preguntas de sociabilidad?

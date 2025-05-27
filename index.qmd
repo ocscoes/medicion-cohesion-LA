@@ -1,3 +1,3 @@
-# Abstract {.unnumbered}
+## Abstract {.unnumbered}
 
 En este documento explicamos la construcción de indicadores para la medición de indicadores de cohesión social en América Latina a partir de datos de LAPOP, Latinobarometro y la Encuesta Mundial de Valores. 
