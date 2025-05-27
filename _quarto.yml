@@ -1,5 +1,6 @@
 project:
   type: book
+  output-dir: docs
 
 book:
   title: "Medición Cohesión Social América Latina"
@@ -7,11 +8,13 @@ book:
   date: "2025"
   chapters:
     - index.qmd
+    - intro.qmd
+    - cohesion-horizontal.qmd
 
 # bibliography: ocs.bib
 
 format:
   html:
     theme: cosmo
-  pdf:
-    documentclass: scrreprt
+  # pdf:
+  #   documentclass: scrreprt

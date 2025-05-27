@@ -437,5 +437,5 @@ rownames(imputation_summary) <- numeric_vars
 # imputation_summary
 rm(numeric_vars,var)
 
-save(datos, file="input/data/datos_merge.RData")
+save(datos, file="input/data/datos_horizontal.RData")
 

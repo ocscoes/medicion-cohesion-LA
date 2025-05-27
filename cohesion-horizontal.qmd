@@ -26,7 +26,7 @@ mean_na <- function(...) {
   return(mean_result)
 }
 
-load("input/data/datos_merge.Rdata")
+load("input/data/datos_horizontal.Rdata")
 
 datos[] <- lapply(datos, function(col) {
   col[is.nan(col)] <- NA
@@ -44,9 +44,9 @@ La dimensión horizontal está dirigida hacia la cohesión dentro de la sociedad
 
 3. Redes Sociales
 
-### Sentido de Pertenencia
+## Sentido de Pertenencia
 
-Busca medir el grado en que las personas se sienten parte de una comunidad política nacional, el orgullo de pertencer a ella, a sus instituciones, tradiciones y costumbres. 
+Busca medir el grado en que las personas se sienten parte de una comunidad política nacional, el orgullo de pertenecer a ella, a sus instituciones, tradiciones y costumbres. 
 
 LAPOP incluye dos indicadores que miden orgullo sobre el sistema político y necesidad de apoyar el sistema político del país. Por su lado, WVS incluye preguntas sobre orgullo de pertenecer al país y sobre la posibilidad de luchar en un guerra por el país.
 
