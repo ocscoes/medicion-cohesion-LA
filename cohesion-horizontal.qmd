@@ -44,7 +44,9 @@ La dimensión horizontal está dirigida hacia la cohesión dentro de la sociedad
 
 3. Redes Sociales
 
-## Sentido de Pertenencia
+## Subdimensiones
+
+### Sentido de Pertenencia
 
 Busca medir el grado en que las personas se sienten parte de una comunidad política nacional, el orgullo de pertenecer a ella, a sus instituciones, tradiciones y costumbres. 
 
@@ -100,37 +102,11 @@ chart.Correlation(datos_pertenencia %>%
 ```
 Nota. La correlación se realizó con datos imputados.
 
-- Tengo dudas sobre si esto realmente conforma una única dimensión: Habría que eligir entre los indicadores referidos a sist. político (LAPOP) y los que refieren más bien a la nación (WVS)
-
-<!-- # ```{r echo=F} -->
-<!-- #  -->
-<!-- # datos_pertenencia %>% select(3:6) %>% KMO() -->
-<!-- # ``` -->
-<!-- #  -->
-<!-- # - El test KMO (0,54) sugiere que los indicadores no presentan una estructura factorial.  -->
-
-<!-- **Análisis Factorial Exploratorio** -->
-
-<!-- ```{r} -->
-
-<!-- datos_pertenencia %>% select(3:6) %>% -->
-<!--   fa.parallel(fa = "fa", n.iter = 100) -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-
-<!-- m1 <- datos_pertenencia %>% select(3:6) %>% -->
-<!--   fa(nfactors = 2, fm = "ml") -->
-
-
-<!-- print(m1, cut = 0.4)  # Mostrar solo cargas ≥ 0.3 -->
-
-<!-- ``` -->
-
+Por criterios estadísticos y teóricos, se dejará una única variable: **Orgullo Nacional** (WVS). 
 
 ### Calidad de vida en el vecindario
 
-LAPOP incluye una varios indicadores de calidad de vida urbana (principalmente, acceso a servicios básicos), así como seguridad objetiva y subjetiva. Por otro lado, la WVS incluye un indicador de confianza en los vecinos
+LAPOP incluye una varios indicadores de calidad de vida urbana (principalmente, acceso a servicios básicos), así como indicadores subjetivos y objetivos de calidad. Por otro lado, la WVS incluye un indicador de confianza en los vecinos
 
 ```{r}
 #| label: descriptivos-vecindario
@@ -186,35 +162,7 @@ chart.Correlation(datos_vecindario %>%
 
 ```
 
-<!-- # ```{r echo=F} -->
-<!-- #  -->
-<!-- # datos_vecindario %>% ungroup %>% select(3:9) %>% KMO() -->
-<!-- # ``` -->
-
-<!-- **Análisis Factorial Exploratorio** -->
-
-<!-- ```{r} -->
-
-<!-- datos_vecindario %>%  -->
-<!--   ungroup %>% -->
-<!--   select(3:9) %>% -->
-<!--   fa.parallel(fa = "fa", n.iter = 100) -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-
-<!-- m2 <- datos_vecindario %>% -->
-<!--   ungroup() %>% -->
-<!--   select(3:9) %>% -->
-<!--   fa(nfactors = 2, fm = "ml", rotate= "varimax") -->
-
-
-<!-- print(m2, cut = 0.4) -->
-
-<!-- ``` -->
-
-
-**Calcular puntaje**
+**Correlaciones**
 
 ```{r echo=F}
 datos <- datos %>%
@@ -245,8 +193,7 @@ chart.Correlation(datos %>%
 
 ```
 
-- Propuesta: ¿Dejar solo confianza vecinos y seguridad urbana?
-
+Se eliminarán las variables de acceso a servicios básicos. 
 
 ### Redes
 
@@ -301,31 +248,6 @@ chart.Correlation(datos_redes %>%
                     select(3:10))
 
 ```
-<!-- # ```{r echo=F} -->
-<!-- #  -->
-<!-- #  -->
-<!-- # datos_redes %>% ungroup %>% select(3:11) %>% KMO() -->
-<!-- # ``` -->
-
-<!-- # ```{r} -->
-<!-- #  -->
-<!-- # datos_redes %>% -->
-<!-- #   ungroup %>% -->
-<!-- #   select(3:11, -7) %>% -->
-<!-- #   fa.parallel(fa = "fa", n.iter = 100) -->
-<!-- # ``` -->
-
-<!-- # ```{r} -->
-<!-- #  -->
-<!-- # m3 <- datos_redes %>% -->
-<!-- #   ungroup() %>% -->
-<!-- #   select(3:11, -7) %>% -->
-<!-- #   fa(nfactors = 3, fm = "ml") -->
-<!-- #  -->
-<!-- #  -->
-<!-- # print(m3, cut = 0.4) -->
-<!-- #  -->
-<!-- # ``` -->
 
 **Calcular puntaje**
 
@@ -359,4 +281,400 @@ chart.Correlation(datos %>%
 
 ```
 
-- ¿Sacar preguntas de sociabilidad?
+Se eliminarán los indiciadores de sociabilidad, pues la correlación negativa dificultaría la interpretación sustantiva del indice. 
+
+
+## Análisis Factorial Exploratorio
+
+<!-- Se mantuvieron las siguientes variables: Orgullo Nacional (WVS), Percepción de Seguridad (LAPOP), Víctima de Delitos (LAPOP), Confianza en los vecinos (WVS), Confianza Interpersonal (LAPOP), Recibir beneficios sociales solo si lo necesita (WVS), Pagar Impuestos (WVS), Pagar el transporte público (WVS) y no aceptar sobornos (WVS).  -->
+
+<!-- **Idoneidad de los datos** -->
+
+<!-- ```{r echo=FALSE} -->
+
+<!-- subset <- datos %>% -->
+<!--   ungroup () %>% -->
+<!--   select(it1, vic1ext, aoj11, recibir_beneficios, evadir_transporte, -->
+<!--          evadir_impuestos, aceptar_soborno, confiar_vecinos, b4, b6) -->
+
+<!-- chart.Correlation(subset %>% -->
+<!--                     ungroup() %>% -->
+<!--                     select(it1, vic1ext, aoj11, recibir_beneficios, evadir_transporte, -->
+<!--          evadir_impuestos, aceptar_soborno, confiar_vecinos, b4, b6)) -->
+
+<!-- KMO(subset) -->
+
+<!-- cortest.bartlett(subset) -->
+<!-- ``` -->
+<!-- Tanto el test KMO (0,63) como el Test de Esfericidad de Barlett ($\chi^2$= 1871,47; p<0, df=36) apuntan a que los datos son adecuados para realizar análisis factorial.  -->
+
+<!-- **Cantidad de factores** -->
+
+<!-- ```{r} -->
+<!-- set.seed(231018) # Resultado reproducible -->
+<!-- n_facts <- fa.parallel(subset,  -->
+<!--                        fm = 'ml', fa = 'fa') -->
+<!-- ``` -->
+
+<!-- El Análisis paralelo sugiere 2 factores -->
+
+<!-- **Modelo de dos factores** -->
+
+<!-- ```{r} -->
+<!-- m2f <- fa(subset, nfactors = 3,  -->
+<!--    fm = "ml", rotate = "none") -->
+
+<!-- print(m2f, cut = 0.4) -->
+<!-- ``` -->
+
+<!-- La solución es poco clara, por lo que se aplicó una rotación oblimin, asumiendo correlación entre los factores. Sin embargo, se debe tener en cuenta que los indicadores de ajuste no son claros (66% de varianza común explicada; RMSEA= 0,299)  -->
+
+<!-- ```{r} -->
+<!-- m2f_rot <- fa(subset, nfactors = 3,  -->
+<!--    fm = "ml", rotate = "oblimin") -->
+
+<!-- print(m2f_rot, cut=0.4) -->
+<!-- ``` -->
+
+<!-- Voy a eliminar el indicador de recibir beneficios no parece mucho sentido sustancial con el resto de los indicadores del factor. Dado queda un poco aparte, debería probar una solución con 3 factores.  -->
+
+
+<!-- ```{r} -->
+<!-- subset <- datos %>% -->
+<!--   ungroup () %>% -->
+<!--   select(aoj11, evadir_transporte, -->
+<!--          evadir_impuestos, aceptar_soborno, confiar_vecinos, b4, it1, b6, -->
+<!--          vic1ext) -->
+
+<!-- KMO(subset) -->
+
+<!-- cortest.bartlett(subset) -->
+
+<!-- ``` -->
+
+<!-- El KMO de hecho mejora a 0,7.  -->
+
+<!-- ```{r} -->
+
+<!-- set.seed(231018) # Resultado reproducible -->
+<!-- n_facts <- fa.parallel(subset,  -->
+<!--                        fm = 'ml', fa = 'fa') -->
+
+<!-- m3f <- fa(subset, nfactors = 3,  -->
+<!--    fm = "ml", rotate = "none") -->
+
+<!-- print(m3f, cut = 0.4) -->
+
+<!-- m2f <- fa(subset, nfactors = 4,  -->
+<!--    fm = "ml", rotate = "oblimin") -->
+
+<!-- print(m2f, cut = 0.4) -->
+<!-- ``` -->
+
+<!-- La solución es clara; el ajuste es algo mejor, pero no llega a ser bueno (77% de varianza explicada, RMSEA= 0,276). ¿Quizás probar con 4 factores? -->
+
+
+<!-- ```{r} -->
+<!-- m4f <- fa(subset, nfactors = 4,  -->
+<!--    fm = "ml", rotate = "none") -->
+
+<!-- print(m3f, cut = 0.4) -->
+
+<!-- m4f <- fa(subset, nfactors = 4,  -->
+<!--    fm = "ml", rotate = "oblimin") -->
+
+<!-- print(m4f, cut = 0.4) -->
+<!-- ``` -->
+
+<!-- El ajuste funciona bastante bien. Todas las comunalidades están sobre 0,5. 84% de varianza explicada y RMSEA de 0,052 (significativo al 90% de confianza).  -->
+
+<!-- Factor 1 (21% de varianza explicada): Confianza Interpersonal -->
+<!-- Factor 2 (32% de varianza explicada): Comportamiento cívico -->
+<!-- Factor 3 (21% de varianza explicada): Seguridad urbana -->
+<!-- Factor 4 (10% de varianza explicada): Orgullo Nacional.  -->
+
+<!-- **Calcular puntajes** -->
+
+<!-- ```{r echo=F} -->
+<!-- datos <- datos %>% -->
+<!--   group_by(wave,pais)%>% -->
+<!--   mutate(sub_confianza = mean_na(mean_na(it1, confiar_vecinos)), -->
+<!--          sub_seguridad = mean_na(mean_na(aoj11, vic1ext)), -->
+<!--          sub_prosocial = mean_na(mean_na(evadir_transporte, -->
+<!--                                          evadir_impuestos, -->
+<!--                                          aceptar_soborno)), -->
+<!--          sub_orgullo = mean_na(b4, b6)) -->
+
+
+<!-- chart.Correlation(datos %>% -->
+<!--                     ungroup() %>% -->
+<!--                     # filter(pais!="Haiti") %>% -->
+<!--                     select(sub_orgullo, sub_confianza, sub_seguridad, sub_prosocial)) -->
+<!-- ``` -->
+### Propuesta A: 4 factores con indicadores de pertenencia WVS
+
+Esta propuesta incluye los indicadores subjetivos y objetivos de seguridad de LAPOP (aoj11 y vic1ext), los indiciadores de comportamiento prosocial de WVS (evadir_impuestos, aceptar_soborno, evadir_transporte), el indicador de confianza en vecinos de WVS (confiar_vecinos) y el de confianza interpersonal de LAPOP (it1).
+
+**Adecuación de los datos**
+
+```{r}
+subset_a<- datos %>%
+  ungroup () %>%
+  select(aoj11, evadir_transporte,
+         evadir_impuestos, aceptar_soborno, confiar_vecinos, it1,
+         vic1ext, orgullonacional)
+```
+
+```{r}
+#| label: correlaciones-propuesta-a
+#| fig-cap: "Correlación indicadores propuesta a"
+#| echo: false
+#| results: asis
+#| warning: false
+#| fig.width: 10
+#| fig.align: center
+chart.Correlation(subset_a %>%
+                    ungroup())
+```
+
+En general, se observan correlaciones sobre 0,3 y 0,5. Sin embargo, el indicador de orgullo nacional muestra correlaciones más inconsistentes con el resto de los indicadores
+
+```{r}
+KMO(subset_a)
+
+cortest.bartlett(subset_a)
+```
+Tanto el KMO (0,76) como el test de esfericidad de Bartlett ($\chi^2$= 1489,5; p<0,001, df=28) indican que los datos son adecuados para realizar un análisis factorial. 
+**Análisis Paralelo**
+
+```{r}
+#| label: analisis-paralelo
+#| fig-cap: "Análisis paralelo propuesta A"
+#| echo: false
+#| results: asis
+#| warning: false
+#| fig.width: 10
+#| fig.align: center
+
+
+set.seed(231018) # Resultado reproducible
+
+n_facts <- fa.parallel(subset_a, 
+                       fm = 'ml', fa = 'fa')
+```
+
+El análisis paralelo sugiere la existencia de dos factores. 
+
+**Modelo con dos factores**
+
+```{r echo=F}
+ma_2f <- fa(subset_a, nfactors = 2, 
+   fm = "ml", rotate = "none")
+
+print(ma_2f, cut = 0.4)
+```
+
+La varianza explicada por los dos factores es de un 66%. El indicadores de orgullo nacional no se anida en ningún factor. El RMSEA (0,273) sugiere un mal ajuste del modelo. 
+
+```{r echo=F}
+ma_3f <- fa(subset_a, nfactors = 3, 
+   fm = "ml", rotate = "none")
+
+print(ma_3f, cut = 0.4)
+```
+La varianza explicada sube a un 77% y orgullo nacional ahora sí cae dentro de un factor. Sin embargo, los índices de ajuste no mejoran (RMSEA= 0,276)
+
+```{r echo=F}
+ma_4f <- fa(subset_a, nfactors = 4, 
+   fm = "ml", rotate = "none")
+
+print(ma_4f, cut = 0.4) # Mejor ajuste estadístico. Voy a rotarlo para generar una solución clara. Oblimin, asumiendo correlación entre factores. 
+
+```
+
+La varianza explicada sube el 84%, aunque los autovalores del factor 4 están bajo el umbral recomendado (0,63). Con todo, todas las comunalidades están por sobre 0,5 y el índice RMSEA en significativo al 90% de confianza (0,052). 
+
+Se rotó el modelo para obtener una solución clara. Se utilizado el método *oblimin*, asumiendo correlación entre los factores. 
+
+```{r}
+ma_4f_rot <- fa(subset_a, nfactors = 4, 
+   fm = "ml", rotate = "oblimin")
+
+print(ma_4f_rot, cut = 0.4)
+```
+
+Se logra una solución clara:
+
+- Factor 1 (32% de varianza explicada): Agrupa los indicadores de **comportamiento prosocial** de la encuesta mundial de valores.
+- Factor 2: (21% de varianza explicada): Agrupa los indicadores **subjetivos y objetivos de seguridad** de LAPOP
+- Factor 3 (21% de la varianza explicada): Agrupa los indicadores de **confianza en la comunidad e interpersonal**
+- Factor 4 (10% de la varianza explicada): Incluye únicamente el indicador de **Orgullo nacional** de la Encuesta Mundial de Valores. 
+
+**Correlaciones subdimensiones**
+
+```{r echo=F}
+datos <- datos %>%
+  group_by(wave,pais)%>%
+  mutate(sub_confianza = mean_na(mean_na(it1, confiar_vecinos)),
+         sub_seguridad = mean_na(mean_na(aoj11, vic1ext)),
+         sub_prosocial = mean_na(mean_na(evadir_transporte,
+                                         evadir_impuestos,
+                                         aceptar_soborno)),
+         sub_orgullo = mean_na(orgullonacional))
+
+
+chart.Correlation(datos %>%
+                    ungroup() %>%
+                    # filter(pais!="Haiti") %>%
+                    select(sub_orgullo, sub_confianza, sub_seguridad, sub_prosocial))
+```
+
+Se calculó el promedio simple de los indicadores incluidos en cada factor y se hizo un análisis de correlación entre los índices resultantes. Se observa que el indicador de orgullo nacional sigue mostrando correlaciones bajas con las demás. 
+
+**Correlaciones subdimensiones solo LAPOP**
+
+```{r echo=F}
+datos <- datos %>%
+  group_by(wave,pais)%>%
+  mutate(sub_confianza = mean_na(mean_na(it1)),
+         sub_seguridad = mean_na(mean_na(aoj11, vic1ext)),
+         sub_orgullo = mean_na(orgullonacional))
+
+
+chart.Correlation(datos %>%
+                    ungroup() %>%
+                    # filter(pais!="Haiti") %>%
+                    select(sub_confianza, sub_seguridad))
+```
+
+Por último, se hizo un ejercicio similar pero incluyendo únicamente indicadores incluidos en LAPOP. El resultado de esto, es que dos subdimensiones quedan (orgullo nacional y comportamiento prosocial) quedan fuera del análisis. Sin embargo, la correlación entre las dos subdimensiones restantes es buena (0,53). 
+
+### Propuesta B:  4 factores son indicadores de pertenencia LAPOP
+
+Se hizo el mismo ejercicio pero esta vez incluyendo los indicadores de pertenencia y orgullo institucional de LAPOP con el fin de comparar su rendimiento estadístico con los de la WVS. 
+
+```{r}
+subset_b <- datos %>%
+  ungroup () %>%
+  select(aoj11, evadir_transporte,
+         evadir_impuestos, aceptar_soborno, confiar_vecinos, it1,
+         vic1ext, b4, b6)
+```
+
+```{r}
+chart.Correlation(subset_b %>%
+                    ungroup())
+```
+
+A primera vista, las correlaciones de estos dos nuevos indicadores mejoran en relación a los indicadores de la WVS
+
+```{r}
+KMO(subset_b)
+
+cortest.bartlett(subset_b)
+```
+
+Como era de esperar, KMO (0,76) y el test de esfericidad de Bartlett ($\chi^2$= 1862,05; p<0,001, df=36) indican que los datos son adecuados para realizar un análisis factorial. 
+
+<!-- # ```{r} -->
+<!-- # set.seed(231018) # Resultado reproducible -->
+<!-- # n_facts <- fa.parallel(subset_b,  -->
+<!-- #                        fm = 'ml', fa = 'fa') -->
+<!-- # ``` -->
+
+
+```{r}
+# mb_2f <- fa(subset_b, nfactors = 2, 
+#    fm = "ml", rotate = "none")
+# 
+# print(mb_2f, cut = 0.4)
+# 
+# mb_3f <- fa(subset_b, nfactors = 3, 
+#    fm = "ml", rotate = "none")
+# 
+# print(mb_3f, cut = 0.4)
+# 
+mb_4f <- fa(subset_b, nfactors = 4,
+   fm = "ml", rotate = "none")
+
+print(mb_4f, cut = 0.4) # Mejor ajuste estadístico. Voy a rotarlo para generar una solución clara. Oblimin, asumiendo correlación entre factores. 
+
+```
+Los factores se comportan de manera similar a la propuesta anterior, con el modelo de 4 factores logrando un mejor ajuste estadístico. Todos los factores logran eigenvalues por sobre 0,7 y en conjunto explican una varianza del 86%. Todas las comunalidades se encuentran sobre el 50%. Los índices de bondad implican un buen ajuste. 
+
+Al igual que en la propuesta anterior, se realizó una rotación *oblimin* para dar con una solución más clara. 
+
+```{r echo=F}
+mb_4f_rot <- fa(subset_b, nfactors = 4, 
+   fm = "ml", rotate = "oblimin")
+
+print(mb_4f_rot, cut = 0.4)
+
+summary(mb_4f_rot$scores)
+```
+Se genera una solución similar a la anterior con los siguientes factores identificados:
+
+- Factor 1 (29% de varianza explicada): Indicadores de **comportamiento prosocial** de la WVS
+- Factor 2 (21% de varianza explicada): Indicadores de **orgullo e identificación institucional** de LAPOP.
+- Factor 3 (18% de varianza explicada): Indicadores **subjetivos y objetivos de seguridad** de LAPOP.
+- Factor 4 (17% de varianza explicada): Indicadores de **confianza en la comunidad e interpersonal**. 
+
+
+**Correlaciones subdimensiones**
+
+```{r echo=F}
+datos <- datos %>%
+  group_by(wave,pais)%>%
+  mutate(sub_confianza = mean_na(mean_na(it1, confiar_vecinos)),
+         sub_seguridad = mean_na(mean_na(aoj11, vic1ext)),
+         sub_prosocial = mean_na(mean_na(evadir_transporte,
+                                         evadir_impuestos,
+                                         aceptar_soborno)),
+         sub_orgullo = mean_na(b4, b6))
+
+
+chart.Correlation(datos %>%
+                    ungroup() %>%
+                    # filter(pais!="Haiti") %>%
+                    select(sub_orgullo, sub_confianza, sub_seguridad, sub_prosocial))
+```
+
+En esta nueva propuesta, todas las correlaciones son superiores a 0,3, salvo las de seguridad y comportamiento prosocial. 
+
+**Correlaciones subdimensiones solo LAPOP**
+
+```{r echo=F}
+datos <- datos %>%
+  group_by(wave,pais)%>%
+  mutate(sub_confianza = mean_na(mean_na(it1)),
+         sub_seguridad = mean_na(mean_na(aoj11, vic1ext)),
+         sub_orgullo = mean_na(b4, b6))
+
+
+chart.Correlation(datos %>%
+                    ungroup() %>%
+                    # filter(pais!="Haiti") %>%
+                    select(sub_orgullo, sub_confianza, sub_seguridad))
+```
+Al igual que en la propuesta anterior, se incluye una versión que cuenta exclusivamente con indicadores de LAPOP, lo que implica perder la subdimensión de comportamiento prosocial. Todas las correlaciones se mantienen sobre 0,3. 
+
+
+<!-- # Puntajes Factoriales -->
+
+<!-- ```{r} -->
+<!-- datos_ma <- cbind(datos, ma_4f_rot$scores) -->
+
+<!-- chart.Correlation(datos_ma %>% -->
+<!--                     ungroup() %>% -->
+<!--                     # filter(pais!="Haiti") %>% -->
+<!--                     select(ML1, ML2, ML3, ML4)) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- datos_mb <- cbind(datos, mb_4f_rot$scores) -->
+
+<!-- chart.Correlation(datos_mb %>% -->
+<!--                     ungroup() %>% -->
+<!--                     # filter(pais!="Haiti") %>% -->
+<!--                     select(ML1, ML2, ML3, ML4)) -->
+<!-- ``` -->
