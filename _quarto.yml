@@ -2,6 +2,9 @@ project:
   type: book
   output-dir: docs
 
+execute:
+   echo: false
+
 book:
   title: "Medición Cohesión Social América Latina"
   author: "Observatorio de Cohesión Social"
