@@ -422,7 +422,15 @@ subset_a<- datos %>%
   ungroup () %>%
   select(aoj11, evadir_transporte,
          evadir_impuestos, aceptar_soborno, confiar_vecinos, it1,
-         vic1ext, orgullonacional)
+         vic1ext, orgullonacional) %>%
+   set_names(c("seguridad_subjetiva_lapop",
+                                "evadir_transporte_wvs",
+                                "evadir_impuestos_wvs",
+                                "aceptar_soborno_wvs",
+                                "confiar_vecinos_wvs",
+                                "confianza_interpersonal_lapop",
+                                "seguridad_objetiva_lapop",
+                                "orgullo_nacional_wvs"))
 ```
 
 ```{r}
@@ -558,7 +566,16 @@ subset_b <- datos %>%
   ungroup () %>%
   select(aoj11, evadir_transporte,
          evadir_impuestos, aceptar_soborno, confiar_vecinos, it1,
-         vic1ext, b4, b6)
+         vic1ext, b4, b6) %>%
+   set_names(c("seguridad_subjetiva_lapop",
+                                "evadir_transporte_wvs",
+                                "evadir_impuestos_wvs",
+                                "aceptar_soborno_wvs",
+                                "confiar_vecinos_wvs",
+                                "confianza_interpersonal_lapop",
+                                "seguridad_objetiva_lapop",
+                                "orgullo_sist_politico_lapop",
+                                "deber_apoyar_sist_politico_lapop"))
 ```
 
 ```{r}

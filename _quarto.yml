@@ -13,6 +13,7 @@ book:
     - index.qmd
     - intro.qmd
     - cohesion-horizontal.qmd
+    - cohesion-vertical.qmd
 
 # bibliography: ocs.bib
 

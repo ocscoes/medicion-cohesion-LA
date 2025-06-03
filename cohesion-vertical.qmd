@@ -1,0 +1,475 @@
+## Cohesión Vertical
+
+```{r Carga de librerías, include=FALSE}
+
+rm(list = ls())
+
+# Carga de librerías
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, summarytools, PerformanceAnalytics, psych, lavaan)
+
+# Configuraciones
+options(scipen=999)
+st_options(lang='es')
+options(OutDec=",")
+
+# 3. Funcióm media sin NAs
+## Descripción:
+## Simple función que omite el agumento de rm.na=TRUE.
+# Argumentos:
+## ... = Valores a promediar.
+mean_na <- function(...) {
+  mean_result <- mean(c(...), na.rm = TRUE)
+  if (is.nan(mean_result)) {
+    mean_result <- NA
+  }
+  return(mean_result)
+}
+
+load("input/data/datos_vertical.Rdata")
+
+datos <- datos %>%
+  ungroup()
+
+datos <- datos %>%
+  setNames(c("pais","wave",
+             "reuniones_religiosas", #cp6
+             "asociaciones_padres",  #cp7
+             "reuniones_comunidad", #cp8
+             "participa_part_politicos", #cp13
+             "part_protesta", #prot3
+             "juicio justo", #b1
+             "respeto_instituciones", #b2
+             "respeto_derechos_basicos", #b3
+             "confianza_ffaa", #b12
+             "confianza_congreso", #b13
+             "confianza_policia_lapop", #b18
+             "confianza_part_politicos_lapop", #b21
+             "confianza_ejecutivo", #b21a
+             "confianza_gobiernos_locales",
+             "confianza_elecciones",
+             "igualdad_ingresos_lapop",
+             "apoyo_democracia",
+             "gente_comun",
+             "preocupacion_temas_importantes",
+             "satisfaccion_democracia",
+             "percepcion_corrupcion",
+             "participacion_elecciones",
+             "interes_politica",
+             "confianza_poder_judicial",
+             "agencia",
+             "confianza_policia_wvs",
+             "confianza_sist_judicial",
+             "confianza_gobierno",
+             "confianza_part_politicos_wvs",
+             "confianza_parlamento",
+             "importancia_democracia",
+             "igualdad_ingresos_wvs",
+             "trabajo_duro",
+             "firma_peticiones",
+             "protestas_pacificas",
+             "participacion_huelgas",
+             "justicia_distribucion"))
+
+lapop <- datos %>% select(1:27)
+
+lapop[] <- lapply(lapop, function(col) {
+  col[is.nan(col)] <- NA
+  col
+})
+
+
+```
+
+## Descripción de las Variables
+
+Se seleccionaron variables dentro de LAPOP que abordaran las subdimensiones definidas para la dimensión vertical de la Cohesión Vertical. Éstas incluyen pregunta sobre confianza en autoridades e instituciones, legitimidad del sistema democrático, participación cívica y política, percepciones de justicia, meritocracia y corrupación. A continuación se hace un resumen descriptivo de las variables seleccionadas. 
+
+```{r Descriptivos LAPOP, results='asis'}
+# Tabla hecha con summarytools:dfSummary()
+
+print(dfSummary(lapop,
+          headings=FALSE,
+          style = "multiline",
+          plain.ascii = FALSE,
+          tmp.img.dir = 'tmp',
+          varnumbers = FALSE,
+          silent= TRUE,
+          split.by = NULL),
+      max.tbl.height = 500,
+      method = 'render',
+      # css.class = 'table',
+      silent = TRUE,
+      footnote = NA)
+
+# # Contar NA por año-pais
+# LAPOP$na_count <- rowSums(is.na(LAPOP))
+
+# LAPOP %>% group_by(wave) %>% summarise(na= sum(na_count),
+#                                        n= n()*28) %>% mutate(p= na/n)
+
+# 
+# LAPOP <- LAPOP[order(LAPOP$pais),] %>%
+#         filter(!pais %in% c("Suriname","Bahamas","Barbados","Grenada",
+#                             "Saint Lucia","Dominica","Saint Kitts and Nevis",
+#                             "Saint Vincent and the Grenadines")) %>%
+#         select(-c(b43,vicbar1,vicbar3,vicbar7,jamb18a,b23,b39n,nicfear))
+```
+
+## Indicadores de Democracia, Autoridad e Instituciones
+
+```{r}
+#| label: correlaciones-democracia
+#| fig-cap: "Correlaciones Democracia, Autoridad e Instituciones"
+#| echo: false
+#| results: asis
+
+datos <- datos %>%
+  ungroup()
+
+datos_democracia <- datos %>%
+  ungroup() %>%
+  select(c("confianza_congreso",
+           "confianza_poder_judicial",
+           "confianza_part_politicos_lapop",
+           "confianza_ejecutivo",
+           "apoyo_democracia",
+           "satisfaccion_democracia"))
+
+chart.Correlation(datos_democracia)
+
+```
+
+## Indicadores de participación política
+
+```{r}
+#| label: correlaciones-participacion
+#| fig-cap: "Correlaciones Participación Política"
+#| echo: false
+#| results: asis
+
+datos <- datos %>%
+  ungroup()
+
+datos_participacion <- datos %>%
+  ungroup() %>%
+  select(c("participacion_elecciones", 
+           "interes_politica", 
+           "reuniones_religiosas", 
+           "asociaciones_padres", "reuniones_comunidad", 
+           "participa_part_politicos", "part_protesta"))
+
+chart.Correlation(datos_participacion)
+
+```
+Se debería eliminrar participación en elecciones, interés en polítca y participación en protestas, debido a sus bajas correlaciones. 
+
+
+## Indicadores de Justicia y Corrupción
+
+```{r}
+#| label: correlaciones-justicia
+#| fig-cap: "Correlaciones Justicia"
+#| echo: false
+#| results: asis
+
+datos <- datos %>%
+  ungroup()
+
+datos_justicia <- datos %>%
+  ungroup() %>%
+  select(c("igualdad_ingresos_lapop",
+           "percepcion_corrupcion"))
+
+chart.Correlation(datos_justicia)
+
+```
+
+## Análisis Factorial
+
+```{r}
+
+subset <- datos %>%
+  ungroup() %>%
+  select(c("confianza_congreso",
+           "confianza_poder_judicial",
+           "confianza_part_politicos_lapop",
+           "confianza_ejecutivo",
+           "apoyo_democracia",
+           "satisfaccion_democracia",
+           "reuniones_religiosas", 
+           "asociaciones_padres", "reuniones_comunidad", 
+           "participa_part_politicos",
+           "igualdad_ingresos_lapop",
+           "percepcion_corrupcion"
+           ))
+
+chart.Correlation(subset)
+```
+- Las correlaciones de las variables de participación son muy bajas o son negativas.
+
+- Tanto igualdad de ingresos como percepción de corrupción no muestran correlaciones fuertes con ninguna variable. 
+
+
+```{r}
+
+subset <- datos %>%
+  ungroup() %>%
+  select(c("confianza_congreso",
+           "confianza_poder_judicial",
+           "confianza_part_politicos_lapop",
+           "confianza_ejecutivo",
+           "apoyo_democracia",
+           "satisfaccion_democracia"
+           ))
+
+chart.Correlation(subset)
+```
+
+```{r}
+KMO(subset)
+
+cortest.bartlett(subset)
+```
+
+Tanto el KMO (0,85) como el test de esfercidad de Bartlett indican que los datos son adecuados para un análisis factorial. 
+
+```{r}
+set.seed(231018) # Resultado reproducible
+
+n_facts <- fa.parallel(subset, 
+                       fm = 'ml', fa = 'fa')
+```
+
+El análisis paralelo sugiere 2 dimensiones
+
+
+```{r echo=F}
+m1 <- fa(subset, nfactors = 2, 
+   fm = "ml", rotate = "none")
+
+print(m1, cut = 0.4)
+```
+
+Los indicadores de ajuste son buenos. Sin embargo, la varianza explicada por el factor 2 es de solo 6%, y la varianza explicada total es de solo un 62%. 
+
+```{r echo=F}
+m1_rot <- fa(subset, nfactors = 2, 
+   fm = "ml", rotate = "oblimin")
+
+print(m1_rot, cut = 0.4)
+```
+
+Mejoran los autovalores del factor 2 y da una solución clara. El factor 1 da cuenta de confianza en instituciones y el factor 2 en apoyo/satisfacción a la democracia. 
+
+**Calcular puntajes**
+
+```{r echo=F}
+datos <- datos %>%
+  group_by(wave,pais)%>%
+  mutate(sub_confianza_inst = mean_na(mean_na(confianza_congreso,
+                                              confianza_poder_judicial,
+                                              confianza_part_politicos_lapop,
+                                              confianza_ejecutivo)),
+         sub_democracia = mean_na(mean_na(apoyo_democracia,
+                                          satisfaccion_democracia)))
+
+
+chart.Correlation(datos %>%
+                    ungroup() %>%
+                    # filter(pais!="Haiti") %>%
+                    select(sub_confianza_inst, sub_democracia))
+```
+Ambas subdimensiones tienen una correlación de 0,63. Sin embargo, se debe considerar que esto solo respondería a una definición mínima de cohesión vertical, sin tomar en cuenta dimensiones de participación y justicia. 
+
+
+## Modelo incluyendo indicadores de la WVS
+
+Se incluyen indicadores de participación y justicia de la de la Encuesta Mundial de Valores. Para participación se incluyen indicadores de participación en protestas, huelgas y firmar peticiones. Para justicia se incluyen indicadores sobre la importancia de la igualdad de ingresos y del trabajo duro. 
+
+<!-- ```{r} -->
+
+<!-- subset <- datos %>% -->
+<!--   ungroup() %>% -->
+<!--   select(c("confianza_congreso", -->
+<!--            "confianza_poder_judicial", -->
+<!--            "confianza_part_politicos_lapop", -->
+<!--            "confianza_ejecutivo", -->
+<!--            "apoyo_democracia", -->
+<!--            "satisfaccion_democracia", -->
+<!--            "firma_peticiones", -->
+<!--            "protestas_pacificas", -->
+<!--            "participacion_huelgas", -->
+<!--            "igualdad_ingresos_wvs", -->
+<!--            "trabajo_duro")) -->
+
+<!-- chart.Correlation(subset) -->
+<!-- ``` -->
+
+
+```{r}
+
+subset <- datos %>%
+  ungroup() %>%
+  select(c("confianza_congreso",
+           "confianza_poder_judicial",
+           "confianza_part_politicos_lapop",
+           "confianza_ejecutivo",
+           "apoyo_democracia",
+           "satisfaccion_democracia",
+           "firma_peticiones",
+           "protestas_pacificas",
+           "participacion_huelgas"))
+
+chart.Correlation(subset)
+```
+
+```{r}
+subset %>% na.omit() %>% KMO()
+
+subset %>% na.omit() %>% cortest.bartlett()
+
+subset <- na.omit(subset)
+```
+
+KMO de 0,7 sugiere que los datos adecuados para un análisis factorial. 
+
+```{r}
+set.seed(231018) # Resultado reproducible
+
+n_facts <- fa.parallel(subset, 
+                       fm = 'ml', fa = 'fa')
+```
+
+```{r echo=F}
+m2 <- fa(subset, nfactors = 2, 
+   fm = "ml", rotate = "oblimin")
+
+print(m2, cut = 0.4)
+```
+
+<!-- Firmar Peticiones es una variable compleja. Se prueba un nuevo modelo sin ellas.  -->
+
+<!-- ```{r} -->
+
+<!-- subset <- datos %>% -->
+<!--   ungroup() %>% -->
+<!--   select(c("confianza_congreso", -->
+<!--            "confianza_poder_judicial", -->
+<!--            "confianza_part_politicos_lapop", -->
+<!--            "confianza_ejecutivo", -->
+<!--            "apoyo_democracia", -->
+<!--            "satisfaccion_democracia", -->
+<!--            "protestas_pacificas", -->
+<!--            "participacion_huelgas")) -->
+<!-- ``` -->
+
+<!-- ```{r echo=F} -->
+<!-- m3 <- fa(subset, nfactors = 3,  -->
+<!--    fm = "ml", rotate = "oblimin") -->
+
+<!-- print(m3, cut = 0.4) -->
+<!-- ``` -->
+
+<!-- Se logra un modelo con buen ajuste que explica el 70% de la varianza. El factor 1 es confianza en instituciones, el factor 2 participación política y el factor 3 actitudes hacia la democracia.  -->
+
+**Calcular puntajes**
+
+```{r echo=F}
+datos <- datos %>%
+  group_by(wave,pais)%>%
+  mutate(sub_confianza_inst_democracia = mean_na(mean_na(confianza_congreso,
+           confianza_poder_judicial,
+           confianza_part_politicos_lapop,
+           confianza_ejecutivo,
+           apoyo_democracia,
+           satisfaccion_democracia)),
+         sub_participacion= mean_na(mean_na(protestas_pacificas,
+                                            participacion_huelgas,
+                                            firma_peticiones)))
+
+
+chart.Correlation(datos %>%
+                    ungroup() %>%
+                    # filter(pais!="Haiti") %>%
+                    select(sub_confianza_inst_democracia,
+                           sub_participacion))
+
+```
+
+Ni en la dimensión horizontal ni en la vertical, en este set de datos, la participación parece ser un factor ni una dimensión de cohesión social. 
+
+## Modelo incluyendo indicador de justicia redistributiva de Latinobarometro
+
+Se incluyó un indicador de Latinobarometro que pregunta sobre que tan justa se percibe la distribución de ingresos en el país. 
+
+```{r}
+
+subset <- datos %>%
+  ungroup() %>%
+  select(c("confianza_congreso",
+           "confianza_poder_judicial",
+           "confianza_part_politicos_lapop",
+           "confianza_ejecutivo",
+           "apoyo_democracia",
+           "satisfaccion_democracia",
+           "justicia_distribucion"))
+
+chart.Correlation(subset)
+```
+```{r}
+KMO(subset)
+
+cortest.bartlett(subset)
+```
+
+El test KMO y el de esfericidad de Bartlett indican que los datos son adecuados para un análisis factorial. 
+
+```{r}
+set.seed(231018) # Resultado reproducible
+
+n_facts <- fa.parallel(subset, 
+                       fm = 'ml', fa = 'fa')
+```
+
+```{r echo=F}
+m4 <- fa(subset, nfactors = 3, 
+   fm = "ml", rotate = "none")
+
+print(m4, cut = 0.4)
+```
+
+Buen ajuste. Vamos a rotar para ver si hay una solución clara.
+
+```{r echo=F}
+m4_rot <- fa(subset, nfactors = 3, 
+   fm = "ml", rotate = "oblimin")
+
+print(m4_rot, cut = 0.4)
+```
+
+Se mantienen los factores relacionados a instituciones y democracia. El nuevo indicador aparece como un tercer factor independiente que explica el 16% de la varianza total. 
+
+**Calcular puntajes**
+
+```{r echo=F}
+datos <- datos %>%
+  group_by(wave,pais)%>%
+  mutate(sub_confianza_inst = mean_na(mean_na(confianza_congreso,
+           confianza_poder_judicial,
+           confianza_part_politicos_lapop,
+           confianza_ejecutivo)),
+         sub_democracia = mean_na(mean_na(apoyo_democracia,
+           satisfaccion_democracia)),
+         sub_participacion= mean_na(mean_na(protestas_pacificas,
+                                            participacion_huelgas)))
+
+
+chart.Correlation(datos %>%
+                    ungroup() %>%
+                    # filter(pais!="Haiti") %>%
+                    select(sub_confianza_inst, sub_democracia, justicia_distribucion))
+
+```
+
+El indicador muestra correlaciones moderadas con los indicadores de democracia y confianza en las instituciones. 

@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./cohesion-vertical.html" rel="next">
 <link href="./intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -150,6 +151,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./cohesion-horizontal.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Cohesión Horizontal</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cohesion-vertical.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cohesión Vertical</span></span></a>
   </div>
 </li>
     </ul>
@@ -341,7 +348,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAGEAAAELCAQAAABjFyCgAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBAskJK6AAABxElEQVR42u3YwU0DQRBFQYycI0EQD86BKOE6NrLFbd60qk4gLvukXqT9l5+3073vfgAJMxKu6y+3hxfj87L78Z5ZH/R6/6eP5efv3c/5TwMOSUKBhAIJBRIKJBRIKJBQIKFgQMLDh+cpH5ury/ohnf3a/2N96gGHNCDh7l34OmZHeppgR5Ig4WQSCiQUSCiQUCChQEKBhAI70i52pJoXO9IZK9KLHemcF3vAIUkokFAgoUBCgYQCCQUSCiQUDEiwI+1iR6qxIxUMOCQJBRIKJBRIKJBQIKFAQoGEAiPMLkaYmgEJdqSCAYckoUBCgYQCCQUSCiQUSCiQUGBH2sWOVGOEKRhwSBIKJBRIKJBQIKFAQoGEAgkFAxLsSLvYkWrsSAUDDklCgYQCCQUSCiQUSCiQUCChYECCHWkXO1KNHalgwCFJKJBQIKFAQoGEAgkFEgokFAxIsCPtYkeqsSMVDDgkCQUSCiQUSCiQUCChQEKBhIIBCXakXexINXakggGHJKFAQoGEAgkFEgokFEgokFBghNnFCFMzIOHFjpS2vLZPd6Sy+/+bAw5JQoGEAgkFEgokFEgokFAgoWDajnSmAYckoeAXda1BGUnffyYAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAGEAAAELCAQAAABjFyCgAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRN1Sn9oAAABxElEQVR42u3YwU0DQRBFQYycI0EQD86BKOE6NrLFbd60qk4gLvukXqT9l5+3073vfgAJMxKu6y+3hxfj87L78Z5ZH/R6/6eP5efv3c/5TwMOSUKBhAIJBRIKJBRIKJBQIKFgQMLDh+cpH5ury/ohnf3a/2N96gGHNCDh7l34OmZHeppgR5Ig4WQSCiQUSCiQUCChQEKBhAI70i52pJoXO9IZK9KLHemcF3vAIUkokFAgoUBCgYQCCQUSCiQUDEiwI+1iR6qxIxUMOCQJBRIKJBRIKJBQIKFAQoGEAiPMLkaYmgEJdqSCAYckoUBCgYQCCQUSCiQUSCiQUGBH2sWOVGOEKRhwSBIKJBRIKJBQIKFAQoGEAgkFAxLsSLvYkWrsSAUDDklCgYQCCQUSCiQUSCiQUCChYECCHWkXO1KNHalgwCFJKJBQIKFAQoGEAgkFEgokFAxIsCPtYkeqsSMVDDgkCQUSCiQUSCiQUCChQEKBhIIBCXakXexINXakggGHJKFAQoGEAgkFEgokFEgokFBghNnFCFMzIOHFjpS2vLZPd6Sy+/+bAw5JQoGEAgkFEgokFEgokFAgoWDajnSmAYckoeAXda1BGUnffyYAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">232 (100,0%)</td>
 <td style="text-align: center;">0 (0,0%)</td>
 </tr>
@@ -364,7 +371,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">11 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBAskJK6AAABf0lEQVR42u3dQU6DQABAUTG9o3fQ8+gdPKVuqWmYPENK6fy3I+2i+WGAMkxYfl4iXo/+AWdTMFQwdFlvLEf/mkN8Dg/j76swl9GXZ/C2+en31VZDEhUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDF3NfI8nzT/mfJpg5c+jAjJpPqeGJCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYwsVZ2zexZ7iBjcG2bmHPcQN71+V/40mU/3uUvXfXYNv732iC5Rx7bwd9VDBUMHSaNd+jE8q9TgqnCfYoc/INSVQwdJohOXKvP21PE+xel70NSVQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMPQ0j2xu22/Z2CTB9nsCtiGJCoYKhgqGCoYKhpb1BcpXb0m/af1S4aVGpiGJCoYKhn4BD1kch+Qdxr8AAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRN1Sn9oAAABf0lEQVR42u3dQU6DQABAUTG9o3fQ8+gdPKVuqWmYPENK6fy3I+2i+WGAMkxYfl4iXo/+AWdTMFQwdFlvLEf/mkN8Dg/j76swl9GXZ/C2+en31VZDEhUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDF3NfI8nzT/mfJpg5c+jAjJpPqeGJCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYwsVZ2zexZ7iBjcG2bmHPcQN71+V/40mU/3uUvXfXYNv732iC5Rx7bwd9VDBUMHSaNd+jE8q9TgqnCfYoc/INSVQwdJohOXKvP21PE+xel70NSVQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMPQ0j2xu22/Z2CTB9nsCtiGJCoYKhgqGCoYKhpb1BcpXb0m/af1S4aVGpiGJCoYKhn4BD1kch+Qdxr8AAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">232 (100,0%)</td>
 <td style="text-align: center;">0 (0,0%)</td>
 </tr>
@@ -387,7 +394,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">223 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBAskJK6AAABpElEQVR42u3cW06DUBRAUTGdo3PQ8dQ5OEr9RQPR1YI8utdf+9HHTg7hXmiHz6eI560/wNEUDBUMXcYPhhXf6Dp7sHxb820XMf7ol5tfhb1MPvuxbQvWSKKCoYKhgqGCoYKhgqGCoYKhgqGCoX9cS5q5xfrWS/XdBpterG+/VG8kUcHQDkbyeqjrMDsIdqyNxUYSFQwVDBUMFQwVDBUMFQwVDBUMFQztYC1ptt5YPFywrZfqjSQqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGDrcRZA501eTlr+WdJpg/3WTeiOJCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoZW2HE91r8EqFW2qPf5nybLaCRRwVDBUMFQwVDBUMHQHedh5z5BnXPXievWv47dwmluRpm2/C/ETx5s+Rk4ebA5t99N9qDBbt8e6LQCFQwVDBUMFQwVDBUMFQwVDBUMFQx9W0s+5pbgH77/aFH+Y/E9tx1y5mvZv3/7sUYSFQwN47F9f/Bj2JzX0TFsqJFpJFHBUMHQF/1+JuQBmxPIAAAAPXRFWHRpY2M6Y29weXJpZ2h0AENvcHlyaWdodCAyMDA3IEFwcGxlIEluYy4sIGFsbCByaWdodHMgcmVzZXJ2ZWQunmbcKQAAACN0RVh0aWNjOmRlc2NyaXB0aW9uAEdlbmVyaWMgUkdCIFByb2ZpbGUapziOAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRN1Sn9oAAABpElEQVR42u3cW06DUBRAUTGdo3PQ8dQ5OEr9RQPR1YI8utdf+9HHTg7hXmiHz6eI560/wNEUDBUMXcYPhhXf6Dp7sHxb820XMf7ol5tfhb1MPvuxbQvWSKKCoYKhgqGCoYKhgqGCoYKhgqGCoX9cS5q5xfrWS/XdBpterG+/VG8kUcHQDkbyeqjrMDsIdqyNxUYSFQwVDBUMFQwVDBUMFQwVDBUMFQztYC1ptt5YPFywrZfqjSQqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGDrcRZA501eTlr+WdJpg/3WTeiOJCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoZW2HE91r8EqFW2qPf5nybLaCRRwVDBUMFQwVDBUMHQHedh5z5BnXPXievWv47dwmluRpm2/C/ETx5s+Rk4ebA5t99N9qDBbt8e6LQCFQwVDBUMFQwVDBUMFQwVDBUMFQx9W0s+5pbgH77/aFH+Y/E9tx1y5mvZv3/7sUYSFQwN47F9f/Bj2JzX0TFsqJFpJFHBUMHQF/1+JuQBmxPIAAAAPXRFWHRpY2M6Y29weXJpZ2h0AENvcHlyaWdodCAyMDA3IEFwcGxlIEluYy4sIGFsbCByaWdodHMgcmVzZXJ2ZWQunmbcKQAAACN0RVh0aWNjOmRlc2NyaXB0aW9uAEdlbmVyaWMgUkdCIFByb2ZpbGUapziOAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">230 (99,1%)</td>
 <td style="text-align: center;">2 (0,9%)</td>
 </tr>
@@ -410,7 +417,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">223 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBAskJK6AAABnUlEQVR42u3cUU7CQBRAUWvYI3vQ9eAeXKX+VtNGDikMrff8wYcpN74JnQydvl4iXkdfwN4UDBUMneYvptFXM3NZWVzfB1zk/FJON/+VuzsvvPc5+qIaSVUwVDBUMFQwVDBUMFQwVDBUMFQwNPxe8rKzHczhwZZvsp/hNnvZEwQzo7d9dhds9P9jiz4qGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGNrdjuua5a3r7TeuDxPsUecVG0lUMFQwVDBUMFQwVDBUMPSwL657O9a05oHf9EcfI9lGI4kKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhu6w43qUzehld9mifs4HWW2jkUQFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDh/lx1rLtH8928GDbn6ttJFHBUMFQwVDBUMFQwVDBUMFQwVDB0MHvJdfc/uCZfxrs9vNFjSQqGPoxksc+O/i31c8/W9t+rWFrG27nq9/d81nDaz5PI4kKhqb52H788zVszdtsDZtqZBpJVDBUMPQN6N0k4OOW1EQAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRN1Sn9oAAABnUlEQVR42u3cUU7CQBRAUWvYI3vQ9eAeXKX+VtNGDikMrff8wYcpN74JnQydvl4iXkdfwN4UDBUMneYvptFXM3NZWVzfB1zk/FJON/+VuzsvvPc5+qIaSVUwVDBUMFQwVDBUMFQwVDBUMFQwNPxe8rKzHczhwZZvsp/hNnvZEwQzo7d9dhds9P9jiz4qGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGNrdjuua5a3r7TeuDxPsUecVG0lUMFQwVDBUMFQwVDBUMPSwL657O9a05oHf9EcfI9lGI4kKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhu6w43qUzehld9mifs4HWW2jkUQFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDh/lx1rLtH8928GDbn6ttJFHBUMFQwVDBUMFQwVDBUMFQwVDB0MHvJdfc/uCZfxrs9vNFjSQqGPoxksc+O/i31c8/W9t+rWFrG27nq9/d81nDaz5PI4kKhqb52H788zVszdtsDZtqZBpJVDBUMPQN6N0k4OOW1EQAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">230 (99,1%)</td>
 <td style="text-align: center;">2 (0,9%)</td>
 </tr>
@@ -433,7 +440,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">36 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBAskJK6AAABb0lEQVR42u3dwW3CMABA0aRix+7QzkN3YMr26vbivCooBP67ISQSvmQUB2zW7yXi7egTOJuCoYKhy/hgPfpsyHXDx+/nLm9pPNDl36/yAN4nz9/ucMyGJCoYKhgqGCoYKhgqGCoYKhgqGDr11GhuPt/U2eaTB9t/ttmQRAVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDh6wE2bKBwqM6aOnMbEnLstwO2WRhriGJCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoaefP+wuU3fYA2bsr18sC3fX40akqhgqGCoYKhgqGCoYKhg6NeF67bfbe3z1zdn9edKX697X09DEhUMFQwVDBUMFQwVDBUMFQwVDBUMFQyt4w2KrxOvMrunj+H+zFoj05BEBUMFQz+AjhYUBvQregAAAD10RVh0aWNjOmNvcHlyaWdodABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLp5m3CkAAAAjdEVYdGljYzpkZXNjcmlwdGlvbgBHZW5lcmljIFJHQiBQcm9maWxlGqc4jgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRN1Sn9oAAABb0lEQVR42u3dwW3CMABA0aRix+7QzkN3YMr26vbivCooBP67ISQSvmQUB2zW7yXi7egTOJuCoYKhy/hgPfpsyHXDx+/nLm9pPNDl36/yAN4nz9/ucMyGJCoYKhgqGCoYKhgqGCoYKhgqGDr11GhuPt/U2eaTB9t/ttmQRAVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDh6wE2bKBwqM6aOnMbEnLstwO2WRhriGJCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoaefP+wuU3fYA2bsr18sC3fX40akqhgqGCoYKhgqGCoYKhg6NeF67bfbe3z1zdn9edKX697X09DEhUMFQwVDBUMFQwVDBUMFQwVDBUMFQyt4w2KrxOvMrunj+H+zFoj05BEBUMFQz+AjhYUBvQregAAAD10RVh0aWNjOmNvcHlyaWdodABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLp5m3CkAAAAjdEVYdGljYzpkZXNjcmlwdGlvbgBHZW5lcmljIFJHQiBQcm9maWxlGqc4jgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">133 (57,3%)</td>
 <td style="text-align: center;">99 (42,7%)</td>
 </tr>
@@ -456,7 +463,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">36 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBAskJK6AAABhklEQVR42u3dQW6CUBRAUWncY/fQrqfdQ1fZTmkHnxyhCHrPzJgo3uTLCyBO35eIl3tvwNkUDBUMXecPpntvzc0+Fr6K31d9tPmLX29+lYN5HTz3teH7tCRRwVDBUMFQwVDB0MOMFWPjOU2mtCcJtt2U1pJEBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDJ7kYZekq6f2cJNj4+pttr5Mea0migqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqHTHHH9T4sHwGc/QC3YxQ5/tyRRwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwdBuJ0GO89OEdXY8a7R0bmavG7yv05JEBUMFQwVDBUMFQxuOFY8yaY1tOoedY5JapyWJCoYKhgqGfn3pL+/n1v0p3CP4s5c8ys0OjqsliQqGCoYKhgqGCoam+ej1+RTHG9zbbPqcamRakqhgqGDoB1TeG0TdJxbsAAAAPXRFWHRpY2M6Y29weXJpZ2h0AENvcHlyaWdodCAyMDA3IEFwcGxlIEluYy4sIGFsbCByaWdodHMgcmVzZXJ2ZWQunmbcKQAAACN0RVh0aWNjOmRlc2NyaXB0aW9uAEdlbmVyaWMgUkdCIFByb2ZpbGUapziOAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRN1Sn9oAAABhklEQVR42u3dQW6CUBRAUWncY/fQrqfdQ1fZTmkHnxyhCHrPzJgo3uTLCyBO35eIl3tvwNkUDBUMXecPpntvzc0+Fr6K31d9tPmLX29+lYN5HTz3teH7tCRRwVDBUMFQwVDB0MOMFWPjOU2mtCcJtt2U1pJEBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDJ7kYZekq6f2cJNj4+pttr5Mea0migqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqHTHHH9T4sHwGc/QC3YxQ5/tyRRwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwdBuJ0GO89OEdXY8a7R0bmavG7yv05JEBUMFQwVDBUMFQxuOFY8yaY1tOoedY5JapyWJCoYKhgqGfn3pL+/n1v0p3CP4s5c8ys0OjqsliQqGCoYKhgqGCoam+ej1+RTHG9zbbPqcamRakqhgqGDoB1TeG0TdJxbsAAAAPXRFWHRpY2M6Y29weXJpZ2h0AENvcHlyaWdodCAyMDA3IEFwcGxlIEluYy4sIGFsbCByaWdodHMgcmVzZXJ2ZWQunmbcKQAAACN0RVh0aWNjOmRlc2NyaXB0aW9uAEdlbmVyaWMgUkdCIFByb2ZpbGUapziOAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">134 (57,8%)</td>
 <td style="text-align: center;">98 (42,2%)</td>
 </tr>
@@ -611,7 +618,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAGEAAAELCAQAAABjFyCgAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABxElEQVR42u3YwU0DQRBFQYycI0EQD86BKOE6NrLFbd60qk4gLvukXqT9l5+3073vfgAJMxKu6y+3hxfj87L78Z5ZH/R6/6eP5efv3c/5TwMOSUKBhAIJBRIKJBRIKJBQIKFgQMLDh+cpH5ury/ohnf3a/2N96gGHNCDh7l34OmZHeppgR5Ig4WQSCiQUSCiQUCChQEKBhAI70i52pJoXO9IZK9KLHemcF3vAIUkokFAgoUBCgYQCCQUSCiQUDEiwI+1iR6qxIxUMOCQJBRIKJBRIKJBQIKFAQoGEAiPMLkaYmgEJdqSCAYckoUBCgYQCCQUSCiQUSCiQUGBH2sWOVGOEKRhwSBIKJBRIKJBQIKFAQoGEAgkFAxLsSLvYkWrsSAUDDklCgYQCCQUSCiQUSCiQUCChYECCHWkXO1KNHalgwCFJKJBQIKFAQoGEAgkFEgokFAxIsCPtYkeqsSMVDDgkCQUSCiQUSCiQUCChQEKBhIIBCXakXexINXakggGHJKFAQoGEAgkFEgokFEgokFBghNnFCFMzIOHFjpS2vLZPd6Sy+/+bAw5JQoGEAgkFEgokFEgokFAgoWDajnSmAYckoeAXda1BGUnffyYAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAGEAAAELCAQAAABjFyCgAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRN1Sn9oAAABxElEQVR42u3YwU0DQRBFQYycI0EQD86BKOE6NrLFbd60qk4gLvukXqT9l5+3073vfgAJMxKu6y+3hxfj87L78Z5ZH/R6/6eP5efv3c/5TwMOSUKBhAIJBRIKJBRIKJBQIKFgQMLDh+cpH5ury/ohnf3a/2N96gGHNCDh7l34OmZHeppgR5Ig4WQSCiQUSCiQUCChQEKBhAI70i52pJoXO9IZK9KLHemcF3vAIUkokFAgoUBCgYQCCQUSCiQUDEiwI+1iR6qxIxUMOCQJBRIKJBRIKJBQIKFAQoGEAiPMLkaYmgEJdqSCAYckoUBCgYQCCQUSCiQUSCiQUGBH2sWOVGOEKRhwSBIKJBRIKJBQIKFAQoGEAgkFAxLsSLvYkWrsSAUDDklCgYQCCQUSCiQUSCiQUCChYECCHWkXO1KNHalgwCFJKJBQIKFAQoGEAgkFEgokFAxIsCPtYkeqsSMVDDgkCQUSCiQUSCiQUCChQEKBhIIBCXakXexINXakggGHJKFAQoGEAgkFEgokFEgokFBghNnFCFMzIOHFjpS2vLZPd6Sy+/+bAw5JQoGEAgkFEgokFEgokFAgoWDajnSmAYckoeAXda1BGUnffyYAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">232 (100,0%)</td>
 <td style="text-align: center;">0 (0,0%)</td>
 </tr>
@@ -634,7 +641,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">11 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABf0lEQVR42u3dQU6DQABAUTG9o3fQ8+gdPKVuqWmYPENK6fy3I+2i+WGAMkxYfl4iXo/+AWdTMFQwdFlvLEf/mkN8Dg/j76swl9GXZ/C2+en31VZDEhUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDF3NfI8nzT/mfJpg5c+jAjJpPqeGJCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYwsVZ2zexZ7iBjcG2bmHPcQN71+V/40mU/3uUvXfXYNv732iC5Rx7bwd9VDBUMHSaNd+jE8q9TgqnCfYoc/INSVQwdJohOXKvP21PE+xel70NSVQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMPQ0j2xu22/Z2CTB9nsCtiGJCoYKhgqGCoYKhpb1BcpXb0m/af1S4aVGpiGJCoYKhn4BD1kch+Qdxr8AAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRN1Sn9oAAABf0lEQVR42u3dQU6DQABAUTG9o3fQ8+gdPKVuqWmYPENK6fy3I+2i+WGAMkxYfl4iXo/+AWdTMFQwdFlvLEf/mkN8Dg/j76swl9GXZ/C2+en31VZDEhUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDF3NfI8nzT/mfJpg5c+jAjJpPqeGJCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYwsVZ2zexZ7iBjcG2bmHPcQN71+V/40mU/3uUvXfXYNv732iC5Rx7bwd9VDBUMHSaNd+jE8q9TgqnCfYoc/INSVQwdJohOXKvP21PE+xel70NSVQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMPQ0j2xu22/Z2CTB9nsCtiGJCoYKhgqGCoYKhpb1BcpXb0m/af1S4aVGpiGJCoYKhn4BD1kch+Qdxr8AAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">232 (100,0%)</td>
 <td style="text-align: center;">0 (0,0%)</td>
 </tr>
@@ -657,7 +664,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">221 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABmklEQVR42u3cUU7CQBRAUWvYo3vQ9eAeXKX++FGNDL0NWArn/BETwZu8Op2OTp9PFM9bf4C9ESwSLDrMX0xXeIPj8CL5do23vLj5j3BY/V0Wezn5lY+tS6xgJCPBIsEiwSLBIsEiwSLBon9YuI6M7gNu8y5g42D7uwswkpFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYNHGRzZHTp9/3fL06w0HO3X+ddvTr0YyEiy6yEgeH+hfE1zoGra/8/ZrGclIsEiw6IbXYadt+Sdduwy25a8YIxkJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFi3e3nmkBx0jYT/scR50jBjJSLBIsEiwSLBol0+NRtYuf5Y+nru7YKPFzyUWRkYyEiwSLBIsEiwSLBIsEiz6sXC1SXjer5W+TcJzjGQkWCRYJFgkWCRYJFh0dzuuaw0X7bPta8G+LV2yG8lIsGiaj+67m+8/vc6uYZNGjZGMBIsEi74ASJEhTGFs6LEAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRN1Sn9oAAABmklEQVR42u3cUU7CQBRAUWvYo3vQ9eAeXKX++FGNDL0NWArn/BETwZu8Op2OTp9PFM9bf4C9ESwSLDrMX0xXeIPj8CL5do23vLj5j3BY/V0Wezn5lY+tS6xgJCPBIsEiwSLBIsEiwSLBon9YuI6M7gNu8y5g42D7uwswkpFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYNHGRzZHTp9/3fL06w0HO3X+ddvTr0YyEiy6yEgeH+hfE1zoGra/8/ZrGclIsEiw6IbXYadt+Sdduwy25a8YIxkJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFi3e3nmkBx0jYT/scR50jBjJSLBIsEiwSLBol0+NRtYuf5Y+nru7YKPFzyUWRkYyEiwSLBIsEiwSLBIsEiz6sXC1SXjer5W+TcJzjGQkWCRYJFgkWCRYJFh0dzuuaw0X7bPta8G+LV2yG8lIsGiaj+67m+8/vc6uYZNGjZGMBIsEi74ASJEhTGFs6LEAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">230 (99,1%)</td>
 <td style="text-align: center;">2 (0,9%)</td>
 </tr>
@@ -680,7 +687,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">206 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABgElEQVR42u3cXUrDQBhAUSPdo3vQ9egeXKW+RilMjiRMGu95K4X+XPjaTDPp8vUU8Tz7BTyagqGCodv6xjL71ZD3DR+/b7u8pfUT3f78KCfwMrj/84DnbCRRwVDBUMFQwVDBUMFQwdBpD1y3HMfPcNpgc47jxxpJVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDB04g11exjvY9SrkS4ebP9djI0kKhgqGCoYKhgqGCoYKhgqGCoYKhiaspY866V9W0xafI8WxbMu7htrJFHBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDB0MV3II5tOoO12tb574Pp+atGEhUMFQwVDB3wof/IOyfGDvmWPOefIu+jkUQFQwVDBUMFQwVDBUMFQwVDBUMFQz/WktdeNu/j1+J7yw+2V15ajzWSaFlP4Ucjedfr6qzRUiPTSKKCoYKhb390Gtix1cP2AAAAPXRFWHRpY2M6Y29weXJpZ2h0AENvcHlyaWdodCAyMDA3IEFwcGxlIEluYy4sIGFsbCByaWdodHMgcmVzZXJ2ZWQunmbcKQAAACN0RVh0aWNjOmRlc2NyaXB0aW9uAEdlbmVyaWMgUkdCIFByb2ZpbGUapziOAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRN1Sn9oAAABgElEQVR42u3cXUrDQBhAUSPdo3vQ9egeXKW+RilMjiRMGu95K4X+XPjaTDPp8vUU8Tz7BTyagqGCodv6xjL71ZD3DR+/b7u8pfUT3f78KCfwMrj/84DnbCRRwVDBUMFQwVDBUMFQwdBpD1y3HMfPcNpgc47jxxpJVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDB04g11exjvY9SrkS4ebP9djI0kKhgqGCoYKhgqGCoYKhgqGCoYKhiaspY866V9W0xafI8WxbMu7htrJFHBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDB0MV3II5tOoO12tb574Pp+atGEhUMFQwVDB3wof/IOyfGDvmWPOefIu+jkUQFQwVDBUMFQwVDBUMFQwVDBUMFQz/WktdeNu/j1+J7yw+2V15ajzWSaFlP4Ucjedfr6qzRUiPTSKKCoYKhb390Gtix1cP2AAAAPXRFWHRpY2M6Y29weXJpZ2h0AENvcHlyaWdodCAyMDA3IEFwcGxlIEluYy4sIGFsbCByaWdodHMgcmVzZXJ2ZWQunmbcKQAAACN0RVh0aWNjOmRlc2NyaXB0aW9uAEdlbmVyaWMgUkdCIFByb2ZpbGUapziOAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">230 (99,1%)</td>
 <td style="text-align: center;">2 (0,9%)</td>
 </tr>
@@ -703,7 +710,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">102 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABc0lEQVR42u3aS2rDMABAQbvkjr1De570Dj1lu3W70pgY/97sAiHIDxRJWPPPFPG29wDOpmCoYOix/DDvNIjn4B/p504DXA7vsfpXXup94Dvfew9ymqamJCsYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGDrILeoxR7iefqpgI5fTt76e3pREBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDp3rNNmrL95eXDLbl+8umJCoYKhgqGCoYKhgqGNp0Hza6gTyTjTeuR7gC91pNSVQwVDBUMFQwVDBUMFQwVDBUMFQwtOosecVD9aiVh+/rHapHNSVRwVDBUMFQwVDBUMFQwdCfjevddvDDz7u4R/Zvp3+vHfyap21KooKhgqGCoXm5UHzdbJUc9bFYJecamaYkKhgqGPoFE0UaQAPXJskAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRN1Sn9oAAABc0lEQVR42u3aS2rDMABAQbvkjr1De570Dj1lu3W70pgY/97sAiHIDxRJWPPPFPG29wDOpmCoYOix/DDvNIjn4B/p504DXA7vsfpXXup94Dvfew9ymqamJCsYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGDrILeoxR7iefqpgI5fTt76e3pREBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDp3rNNmrL95eXDLbl+8umJCoYKhgqGCoYKhgqGNp0Hza6gTyTjTeuR7gC91pNSVQwVDBUMFQwVDBUMFQwVDBUMFQwtOosecVD9aiVh+/rHapHNSVRwVDBUMFQwVDBUMFQwdCfjevddvDDz7u4R/Zvp3+vHfyap21KooKhgqGCoXm5UHzdbJUc9bFYJecamaYkKhgqGPoFE0UaQAPXJskAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">205 (88,4%)</td>
 <td style="text-align: center;">27 (11,6%)</td>
 </tr>
@@ -726,7 +733,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">104 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABf0lEQVR42u3dS07DMABAQYJ6R+4A5yl34JSwDWycqfItb3YVUmU9YUu1nXb6fol4PXoAV1MwVDB0m7+Yjh7NzH3B4vqx04DnQ7k9/C6bexv8/euQUTUlUcFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwdCJrzuNje+QrX+D7NLBjrhB1pREBUMFQwVDBUMFQwVDBUMFQwVDBUMFQ4d8+F7ypNpZHbRbMdpnWGunYf0NoEtv74ytvwHUGoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGNjg1uvKp49gmx2zn/H7MdTQlUcFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwdCvg9xlZ9Z7/arjOf05+d7rSdnrakqiJ3+EeWzRMjRbhP59MF2Epnngz6e+qPS499l/2FQj06KPCoYKhn4AkFkargYtdHcAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRN1Sn9oAAABf0lEQVR42u3dS07DMABAQYJ6R+4A5yl34JSwDWycqfItb3YVUmU9YUu1nXb6fol4PXoAV1MwVDB0m7+Yjh7NzH3B4vqx04DnQ7k9/C6bexv8/euQUTUlUcFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwdCJrzuNje+QrX+D7NLBjrhB1pREBUMFQwVDBUMFQwVDBUMFQwVDBUMFQ4d8+F7ypNpZHbRbMdpnWGunYf0NoEtv74ytvwHUGoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGNjg1uvKp49gmx2zn/H7MdTQlUcFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwdCvg9xlZ9Z7/arjOf05+d7rSdnrakqiJ3+EeWzRMjRbhP59MF2Epnngz6e+qPS499l/2FQj06KPCoYKhn4AkFkargYtdHcAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">206 (88,8%)</td>
 <td style="text-align: center;">26 (11,2%)</td>
 </tr>
@@ -749,7 +756,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">26 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABZUlEQVR42u3dwW3CMABA0abKjuxQ5ml3YEp6dSsuL1JMCP/dkBCyvuQIOzgs94+Iz2cP4NUUDBUMreOL5dmjGXzjxfW64+DHoaybP2V3F3jvbdqompKoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgaNqZbz30flQTD8nLofeZx95NUxIVDBUMFQwVDBUMFQwd+GFFxr4Yb38W1GmCzXoWVFMSFQwVDBUMFQwVDBUMFQwVDBUMFQwVDJ1m8W3wpt+wt/GmwbbvbTQlUcFQwVDBUMFQwVDBUMFQwVDBUMFQwdCfxfdZfri7p3+7FbaKP+Z/W+2rKYkKhgqGCoYKhgqGCoYKhgqGlnE19NPS6KGv4UbuUiPTlEQFQwVDv61yFajF5TZMAAAAPXRFWHRpY2M6Y29weXJpZ2h0AENvcHlyaWdodCAyMDA3IEFwcGxlIEluYy4sIGFsbCByaWdodHMgcmVzZXJ2ZWQunmbcKQAAACN0RVh0aWNjOmRlc2NyaXB0aW9uAEdlbmVyaWMgUkdCIFByb2ZpbGUapziOAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRN1Sn9oAAABZUlEQVR42u3dwW3CMABA0abKjuxQ5ml3YEp6dSsuL1JMCP/dkBCyvuQIOzgs94+Iz2cP4NUUDBUMreOL5dmjGXzjxfW64+DHoaybP2V3F3jvbdqompKoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgaNqZbz30flQTD8nLofeZx95NUxIVDBUMFQwVDBUMFQwd+GFFxr4Yb38W1GmCzXoWVFMSFQwVDBUMFQwVDBUMFQwVDBUMFQwVDJ1m8W3wpt+wt/GmwbbvbTQlUcFQwVDBUMFQwVDBUMFQwVDBUMFQwdCfxfdZfri7p3+7FbaKP+Z/W+2rKYkKhgqGCoYKhgqGCoYKhgqGlnE19NPS6KGv4UbuUiPTlEQFQwVDv61yFajF5TZMAAAAPXRFWHRpY2M6Y29weXJpZ2h0AENvcHlyaWdodCAyMDA3IEFwcGxlIEluYy4sIGFsbCByaWdodHMgcmVzZXJ2ZWQunmbcKQAAACN0RVh0aWNjOmRlc2NyaXB0aW9uAEdlbmVyaWMgUkdCIFByb2ZpbGUapziOAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">84 (36,2%)</td>
 <td style="text-align: center;">148 (63,8%)</td>
 </tr>
@@ -772,7 +779,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">104 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABf0lEQVR42u3cUU7CQBRAUWvYo3vQ9egeXKX+VmPMuw1NC5zzR0Kg3GTITB9h+XqieD76Am6NYJFg0WX9YDn6av71Pv66fbvyB1m/8WXzqxzgZfSsz12vwZKMBIsEiwSLBIsEiwSLBIsEiwSLBIsEiwSLBIsEiwSLBIsEiwSLbuqe/tR0XLJlWHKXwfYclliSkWCRYJFgkWCRYJFg0Sn2YfPf5RzvFMFmW819f5UzZUlGgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFJ7lbcYzxbaXV/PKhg22ZX1qSkWCRYJFgkWCRYJFgkWCRYNGuO/1bmmhP7Xw0OsM/TVyXJRkJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWbZoa3eP4bGrjmO3+xmdTlmQkWCRYJFgkWCRYJFgkWCRYJFgkWPTjLPnIh+qpX4fvxz1UT1mSkWCRYJFgkWCRYJFg0bLeq37YuP7pdfW/FYtGjSUZCRYJFn0DsCEZ2KXZruEAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRN1Sn9oAAABf0lEQVR42u3cUU7CQBRAUWvYo3vQ9egeXKX+VmPMuw1NC5zzR0Kg3GTITB9h+XqieD76Am6NYJFg0WX9YDn6av71Pv66fbvyB1m/8WXzqxzgZfSsz12vwZKMBIsEiwSLBIsEiwSLBIsEiwSLBIsEiwSLBIsEiwSLBIsEiwSLbuqe/tR0XLJlWHKXwfYclliSkWCRYJFgkWCRYJFg0Sn2YfPf5RzvFMFmW819f5UzZUlGgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFJ7lbcYzxbaXV/PKhg22ZX1qSkWCRYJFgkWCRYJFgkWCRYNGuO/1bmmhP7Xw0OsM/TVyXJRkJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWbZoa3eP4bGrjmO3+xmdTlmQkWCRYJFgkWCRYJFgkWCRYJFgkWPTjLPnIh+qpX4fvxz1UT1mSkWCRYJFgkWCRYJFg0bLeq37YuP7pdfW/FYtGjSUZCRYJFn0DsCEZ2KXZruEAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">206 (88,8%)</td>
 <td style="text-align: center;">26 (11,2%)</td>
 </tr>
@@ -795,7 +802,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">36 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABfklEQVR42u3ay03DQBRAUYzSIz1APdADVcLWsIjmWLYydu7ZRYryucqzpclbfl4iXh/9Ac6mYKhg6LZ+sOz84p/DF8iPvd96V+uvcdv8KkPehp71/bgWrJFEBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMHrwqMGtvCmGEDY5JgIzsYc2xgNJKoYKhgqGDoz0X/KhuDR/p3l7zexuDeGklUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDA0yZn+mNHjpyMPn04VbIbDp0YSFQwVDBUMneqiP+rIu+klgx15N20kUcFQwVDBUMFQwVDBUMFQwVDBUMFQwVDB0CVPK0YN7/SujoGeOtiWY6BGEm38hY0vqF/NxmAz/EP4GI0kKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhha1ksSX0+7MXHf+2rdaamRaSRRwVDB0C8u4xsc3pbsuAAAAD10RVh0aWNjOmNvcHlyaWdodABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLp5m3CkAAAAjdEVYdGljYzpkZXNjcmlwdGlvbgBHZW5lcmljIFJHQiBQcm9maWxlGqc4jgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRN1Sn9oAAABfklEQVR42u3ay03DQBRAUYzSIz1APdADVcLWsIjmWLYydu7ZRYryucqzpclbfl4iXh/9Ac6mYKhg6LZ+sOz84p/DF8iPvd96V+uvcdv8KkPehp71/bgWrJFEBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMHrwqMGtvCmGEDY5JgIzsYc2xgNJKoYKhgqGDoz0X/KhuDR/p3l7zexuDeGklUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDA0yZn+mNHjpyMPn04VbIbDp0YSFQwVDBUMneqiP+rIu+klgx15N20kUcFQwVDBUMFQwVDBUMFQwVDBUMFQwVDB0CVPK0YN7/SujoGeOtiWY6BGEm38hY0vqF/NxmAz/EP4GI0kKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhha1ksSX0+7MXHf+2rdaamRaSRRwVDB0C8u4xsc3pbsuAAAAD10RVh0aWNjOmNvcHlyaWdodABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLp5m3CkAAAAjdEVYdGljYzpkZXNjcmlwdGlvbgBHZW5lcmljIFJHQiBQcm9maWxlGqc4jgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">130 (56,0%)</td>
 <td style="text-align: center;">102 (44,0%)</td>
 </tr>
@@ -958,7 +965,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAGEAAAELCAQAAABjFyCgAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABxElEQVR42u3YwU0DQRBFQYycI0EQD86BKOE6NrLFbd60qk4gLvukXqT9l5+3073vfgAJMxKu6y+3hxfj87L78Z5ZH/R6/6eP5efv3c/5TwMOSUKBhAIJBRIKJBRIKJBQIKFgQMLDh+cpH5ury/ohnf3a/2N96gGHNCDh7l34OmZHeppgR5Ig4WQSCiQUSCiQUCChQEKBhAI70i52pJoXO9IZK9KLHemcF3vAIUkokFAgoUBCgYQCCQUSCiQUDEiwI+1iR6qxIxUMOCQJBRIKJBRIKJBQIKFAQoGEAiPMLkaYmgEJdqSCAYckoUBCgYQCCQUSCiQUSCiQUGBH2sWOVGOEKRhwSBIKJBRIKJBQIKFAQoGEAgkFAxLsSLvYkWrsSAUDDklCgYQCCQUSCiQUSCiQUCChYECCHWkXO1KNHalgwCFJKJBQIKFAQoGEAgkFEgokFAxIsCPtYkeqsSMVDDgkCQUSCiQUSCiQUCChQEKBhIIBCXakXexINXakggGHJKFAQoGEAgkFEgokFEgokFBghNnFCFMzIOHFjpS2vLZPd6Sy+/+bAw5JQoGEAgkFEgokFEgokFAgoWDajnSmAYckoeAXda1BGUnffyYAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAGEAAAELCAQAAABjFyCgAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRTrLurLAAABxElEQVR42u3YwU0DQRBFQYycI0EQD86BKOE6NrLFbd60qk4gLvukXqT9l5+3073vfgAJMxKu6y+3hxfj87L78Z5ZH/R6/6eP5efv3c/5TwMOSUKBhAIJBRIKJBRIKJBQIKFgQMLDh+cpH5ury/ohnf3a/2N96gGHNCDh7l34OmZHeppgR5Ig4WQSCiQUSCiQUCChQEKBhAI70i52pJoXO9IZK9KLHemcF3vAIUkokFAgoUBCgYQCCQUSCiQUDEiwI+1iR6qxIxUMOCQJBRIKJBRIKJBQIKFAQoGEAiPMLkaYmgEJdqSCAYckoUBCgYQCCQUSCiQUSCiQUGBH2sWOVGOEKRhwSBIKJBRIKJBQIKFAQoGEAgkFAxLsSLvYkWrsSAUDDklCgYQCCQUSCiQUSCiQUCChYECCHWkXO1KNHalgwCFJKJBQIKFAQoGEAgkFEgokFAxIsCPtYkeqsSMVDDgkCQUSCiQUSCiQUCChQEKBhIIBCXakXexINXakggGHJKFAQoGEAgkFEgokFEgokFBghNnFCFMzIOHFjpS2vLZPd6Sy+/+bAw5JQoGEAgkFEgokFEgokFAgoWDajnSmAYckoeAXda1BGUnffyYAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">232 (100,0%)</td>
 <td style="text-align: center;">0 (0,0%)</td>
 </tr>
@@ -981,7 +988,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">11 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABf0lEQVR42u3dQU6DQABAUTG9o3fQ8+gdPKVuqWmYPENK6fy3I+2i+WGAMkxYfl4iXo/+AWdTMFQwdFlvLEf/mkN8Dg/j76swl9GXZ/C2+en31VZDEhUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDF3NfI8nzT/mfJpg5c+jAjJpPqeGJCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYwsVZ2zexZ7iBjcG2bmHPcQN71+V/40mU/3uUvXfXYNv732iC5Rx7bwd9VDBUMHSaNd+jE8q9TgqnCfYoc/INSVQwdJohOXKvP21PE+xel70NSVQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMPQ0j2xu22/Z2CTB9nsCtiGJCoYKhgqGCoYKhpb1BcpXb0m/af1S4aVGpiGJCoYKhn4BD1kch+Qdxr8AAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRTrLurLAAABf0lEQVR42u3dQU6DQABAUTG9o3fQ8+gdPKVuqWmYPENK6fy3I+2i+WGAMkxYfl4iXo/+AWdTMFQwdFlvLEf/mkN8Dg/j76swl9GXZ/C2+en31VZDEhUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDF3NfI8nzT/mfJpg5c+jAjJpPqeGJCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYwsVZ2zexZ7iBjcG2bmHPcQN71+V/40mU/3uUvXfXYNv732iC5Rx7bwd9VDBUMHSaNd+jE8q9TgqnCfYoc/INSVQwdJohOXKvP21PE+xel70NSVQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMPQ0j2xu22/Z2CTB9nsCtiGJCoYKhgqGCoYKhpb1BcpXb0m/af1S4aVGpiGJCoYKhn4BD1kch+Qdxr8AAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">232 (100,0%)</td>
 <td style="text-align: center;">0 (0,0%)</td>
 </tr>
@@ -1004,7 +1011,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">222 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABkElEQVR42u3dW07CQABAUTHs0T3oenAPrlJ/a+IgR9LH4D1/EALthQHaTuH0+RTxvPcCzKZgqGDovLxw2ntpBi7DN9q3TRZ5+fDnP9/Lpl5+vPZjhyVpSKKCoYKhgqGCoYKhgqGCoYKhgqEDbRpdptg1d6Bgoy3GfbYZRxqSqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgaIf5YXNMnBvZZULdcU61cg1JVDBUMFQwVDBUMFQwVDBUMFQwdKhzjdz2PwEyebDtT+dqSKKCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCodV278w9g2Jsxf1hM/z0kGtIooKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoTv36T/qoY6xuw+CHPVQx1rzqyefRT221hPZexh62FfY2Giw3jZU/2Gw+07R/xbs2mfeNv9Gu6cra79Y99PyVu//7kvCbV5HwfK7PiVRwVDB0BfUUSDc7lBnowAAAD10RVh0aWNjOmNvcHlyaWdodABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLp5m3CkAAAAjdEVYdGljYzpkZXNjcmlwdGlvbgBHZW5lcmljIFJHQiBQcm9maWxlGqc4jgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRTrLurLAAABkElEQVR42u3dW07CQABAUTHs0T3oenAPrlJ/a+IgR9LH4D1/EALthQHaTuH0+RTxvPcCzKZgqGDovLxw2ntpBi7DN9q3TRZ5+fDnP9/Lpl5+vPZjhyVpSKKCoYKhgqGCoYKhgqGCoYKhgqEDbRpdptg1d6Bgoy3GfbYZRxqSqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgaIf5YXNMnBvZZULdcU61cg1JVDBUMFQwVDBUMFQwVDBUMFQwdKhzjdz2PwEyebDtT+dqSKKCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCodV278w9g2Jsxf1hM/z0kGtIooKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoTv36T/qoY6xuw+CHPVQx1rzqyefRT221hPZexh62FfY2Giw3jZU/2Gw+07R/xbs2mfeNv9Gu6cra79Y99PyVu//7kvCbV5HwfK7PiVRwVDB0BfUUSDc7lBnowAAAD10RVh0aWNjOmNvcHlyaWdodABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLp5m3CkAAAAjdEVYdGljYzpkZXNjcmlwdGlvbgBHZW5lcmljIFJHQiBQcm9maWxlGqc4jgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">230 (99,1%)</td>
 <td style="text-align: center;">2 (0,9%)</td>
 </tr>
@@ -1027,7 +1034,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">175 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABsklEQVR42u3cQXICIRQA0UzKO+YO8Tx6B0+ZbFF/KjTofGD67ZJFiuoqmAGJ28+HiM/sAczGYJDBoFP5w5Y9mtAlXGbPOw62HMCp+a/s6OvpN7e0sTglIYNBBoMMBhkMMhhkMGio97DLBCcBQwWLXlEzX1IjTknIYJDBIINBBoMMBhkMMhhkMMhgkMEgg0EGgwwGGQwyGGQwyGCQwSCDQQaDDAYZDDIYZDDIYJDBIINBBoPSbu/McLUpknjdaaTb9/WckpDBIINBBoMMBg12Kbhe1j8FThss6761UxIyGGQwyGCQwSCDQQaDDAYZDDIYZDDIYFDz5jv/K4RyRtVxWjHihxjvP8NwSkIGgwwGGQwyGGQwyGCQwSCDQQaDDAbt8Mn3rHcNY7tcFRj/a9TqOSUhg0EGg6a97kREj53WU9hDBHvl2fAhgkVaT/8PG6z1VcdFHzIYVDEl19ra9Kpaw1ba2vRySkIGgwwG3a1h/cv7+g+Ih0W/d3lf//HglIQMBh12Lxn7Yw0utuQGu/P/GuyUhAwGGQwyGGQwaCufo9flNzZtvovXis1GjFMSMhhkMOgXZGkrEFW0n5MAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRTrLurLAAABsklEQVR42u3cQXICIRQA0UzKO+YO8Tx6B0+ZbFF/KjTofGD67ZJFiuoqmAGJ28+HiM/sAczGYJDBoFP5w5Y9mtAlXGbPOw62HMCp+a/s6OvpN7e0sTglIYNBBoMMBhkMMhhkMGio97DLBCcBQwWLXlEzX1IjTknIYJDBIINBBoMMBhkMMhhkMMhgkMEgg0EGgwwGGQwyGGQwyGCQwSCDQQaDDAYZDDIYZDDIYJDBIINBBoPSbu/McLUpknjdaaTb9/WckpDBIINBBoMMBg12Kbhe1j8FThss6761UxIyGGQwyGCQwSCDQQaDDAYZDDIYZDDIYFDz5jv/K4RyRtVxWjHihxjvP8NwSkIGgwwGGQwyGGQwyGCQwSCDQQaDDAbt8Mn3rHcNY7tcFRj/a9TqOSUhg0EGg6a97kREj53WU9hDBHvl2fAhgkVaT/8PG6z1VcdFHzIYVDEl19ra9Kpaw1ba2vRySkIGgwwG3a1h/cv7+g+Ih0W/d3lf//HglIQMBh12Lxn7Yw0utuQGu/P/GuyUhAwGGQwyGGQwaCufo9flNzZtvovXis1GjFMSMhhkMOgXZGkrEFW0n5MAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">224 (96,6%)</td>
 <td style="text-align: center;">8 (3,4%)</td>
 </tr>
@@ -1050,7 +1057,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">175 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABiElEQVR42u3cwU3DMABAUYK6IzvAPLADU8I1ICTnVWndhP9uVaXK+qqTxk66fD1FPM8ewNEUDBUMXdYvltmjWXnfcHB9u9OA10O5XP0pN/cyeP9zyqiakqhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgaMqK65bl50c1aYl6tPw8awF6rCmJCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoZusC955G3asZts5D7mU0L7aEqigqGCoYKhB37AdGx8Pt7/md1DB5txNm5KooKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgiHeNTr3rSZjV2yznflWk7GmJCoYKhgqGCoYKhgqGCoYKhgqGDr0HYhj+9/UefJg+1/3NiVRwVDB0I9j2H9fHNzi10H/uH8Xei9NSVQwVDBUMFQwVDBUMHTyi++xTT/WVysa/z6Y/lRf1oE/ujT60+vqG7bUyHTQRwVDBUPfgCoc3MP2ovEAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRTrLurLAAABiElEQVR42u3cwU3DMABAUYK6IzvAPLADU8I1ICTnVWndhP9uVaXK+qqTxk66fD1FPM8ewNEUDBUMXdYvltmjWXnfcHB9u9OA10O5XP0pN/cyeP9zyqiakqhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgaMqK65bl50c1aYl6tPw8awF6rCmJCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoZusC955G3asZts5D7mU0L7aEqigqGCoYKhB37AdGx8Pt7/md1DB5txNm5KooKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgiHeNTr3rSZjV2yznflWk7GmJCoYKhgqGCoYKhgqGCoYKhgqGDr0HYhj+9/UefJg+1/3NiVRwVDB0I9j2H9fHNzi10H/uH8Xei9NSVQwVDBUMFQwVDBUMHTyi++xTT/WVysa/z6Y/lRf1oE/ujT60+vqG7bUyHTQRwVDBUPfgCoc3MP2ovEAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">224 (96,6%)</td>
 <td style="text-align: center;">8 (3,4%)</td>
 </tr>
@@ -1073,7 +1080,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">191 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABfElEQVR42u3cUU7CQBRAUWvYo3vQ9egeXKX+VoO2ByvTNvf8EUiBGwZeyqTTx0PE4+gXcDQFQwVDl/mNaZNDvq74WnzZ5qnuZP6GLjcf5RdPC/e/jy7wBy1JVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQw9C9bNpcddx/soGBLu2D3uw+2JYkKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGBp2iXmP5vP+Is/47DrbPq1+0JFHBUMFQwVDBUMFQwRDPYWu2kZzZDYPrPgfKe2lJooKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoR3vD1s2YsvdoYON+Ie0JYkKhgqGCoYKhgqGCoa+zGHn2yy3/Wj7bXA97lWXrtt+tD30pL+FVatq9imc5o9/O92S3MbzT8GyrF9JVDBUMPQJsqocrjR3++sAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRTrLurLAAABfElEQVR42u3cUU7CQBRAUWvYo3vQ9egeXKX+VoO2ByvTNvf8EUiBGwZeyqTTx0PE4+gXcDQFQwVDl/mNaZNDvq74WnzZ5qnuZP6GLjcf5RdPC/e/jy7wBy1JVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQw9C9bNpcddx/soGBLu2D3uw+2JYkKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGBp2iXmP5vP+Is/47DrbPq1+0JFHBUMFQwVDBUMFQwRDPYWu2kZzZDYPrPgfKe2lJooKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoR3vD1s2YsvdoYON+Ie0JYkKhgqGCoYKhgqGCoa+zGHn2yy3/Wj7bXA97lWXrtt+tD30pL+FVatq9imc5o9/O92S3MbzT8GyrF9JVDBUMPQJsqocrjR3++sAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">227 (97,8%)</td>
 <td style="text-align: center;">5 (2,2%)</td>
 </tr>
@@ -1096,7 +1103,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">36 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABX0lEQVR42u3dUU7CQBRAUWvYI3vQ9eAeXKX8DkYbLtLUgXP+GpJJuW2H9Ie3fL1QvO59ArMRLBIsOowHy95n82en1S35/cYvOC56uG2J/+v46yefd1n/4YKtWbv/rr37nirYPe4+m34kWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFg04f/pn3adLDRhsG3GWKxehmGaw5TBtnDtRbCHRYJFgkWCRReb/jZzpx7Lt1/JredOzc8jGQkWCRYJFgkWCRYJFgkWCRYt49vQhynpP3obXgoXjRqPZCRYJFh0Bl1aFRLCOthqAAAAPXRFWHRpY2M6Y29weXJpZ2h0AENvcHlyaWdodCAyMDA3IEFwcGxlIEluYy4sIGFsbCByaWdodHMgcmVzZXJ2ZWQunmbcKQAAACN0RVh0aWNjOmRlc2NyaXB0aW9uAEdlbmVyaWMgUkdCIFByb2ZpbGUapziOAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRTrLurLAAABX0lEQVR42u3dUU7CQBRAUWvYI3vQ9eAeXKX8DkYbLtLUgXP+GpJJuW2H9Ie3fL1QvO59ArMRLBIsOowHy95n82en1S35/cYvOC56uG2J/+v46yefd1n/4YKtWbv/rr37nirYPe4+m34kWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFg04f/pn3adLDRhsG3GWKxehmGaw5TBtnDtRbCHRYJFgkWCRReb/jZzpx7Lt1/JredOzc8jGQkWCRYJFgkWCRYJFgkWCRYt49vQhynpP3obXgoXjRqPZCRYJFh0Bl1aFRLCOthqAAAAPXRFWHRpY2M6Y29weXJpZ2h0AENvcHlyaWdodCAyMDA3IEFwcGxlIEluYy4sIGFsbCByaWdodHMgcmVzZXJ2ZWQunmbcKQAAACN0RVh0aWNjOmRlc2NyaXB0aW9uAEdlbmVyaWMgUkdCIFByb2ZpbGUapziOAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">134 (57,8%)</td>
 <td style="text-align: center;">98 (42,2%)</td>
 </tr>
@@ -1119,7 +1126,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">36 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABdUlEQVR42u3dS07DMABAQYJ6R+4A5yl34JSwDQhXGTXgBN7sWqn5PNVOF5a7vD9EPM6+gLMpGCoYuqxfLLOvZjfXG1PzC9/m+mAX/fBZPA3ef7vzuA1JVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQw9Gf3rRgbbQKybQOQfxjs+y1Atm4A0pBEp/6GXSdsfnbqYD+3w85YQxIVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDH1avbPvH3TtZ8ayppEvy51+f/nQNvetGtxTQxIVDB1oBeLsmerG+Vfz94GCzZ5Bt529IYkKhgqGCoaW9aPh9UC/qI/kefWUXGpkGpKoYKhg6ANqbRo8fWfcTwAAAD10RVh0aWNjOmNvcHlyaWdodABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLp5m3CkAAAAjdEVYdGljYzpkZXNjcmlwdGlvbgBHZW5lcmljIFJHQiBQcm9maWxlGqc4jgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRTrLurLAAABdUlEQVR42u3dS07DMABAQYJ6R+4A5yl34JSwDQhXGTXgBN7sWqn5PNVOF5a7vD9EPM6+gLMpGCoYuqxfLLOvZjfXG1PzC9/m+mAX/fBZPA3ef7vzuA1JVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQw9Gf3rRgbbQKybQOQfxjs+y1Atm4A0pBEp/6GXSdsfnbqYD+3w85YQxIVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDH1avbPvH3TtZ8ayppEvy51+f/nQNvetGtxTQxIVDB1oBeLsmerG+Vfz94GCzZ5Bt529IYkKhgqGCoaW9aPh9UC/qI/kefWUXGpkGpKoYKhg6ANqbRo8fWfcTwAAAD10RVh0aWNjOmNvcHlyaWdodABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLp5m3CkAAAAjdEVYdGljYzpkZXNjcmlwdGlvbgBHZW5lcmljIFJHQiBQcm9maWxlGqc4jgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">134 (57,8%)</td>
 <td style="text-align: center;">98 (42,2%)</td>
 </tr>
@@ -1142,7 +1149,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">36 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABe0lEQVR42u3cW06DQABAUTHdo3vQ9egeXKX+oh/CqSMM8Z6/pgnQm8zw7vLxEPF49gZcTcFQwdBt/WEZssjXHdPiy5hVHWT9g253L+UHTxvfv59d4BcakqhgqGDoT+awY5yzc7lwsHN2Lg1JVDBUMPRlDtszjY6ZSK97NvBt0t+aRkdNpEetZ7yGJCoYKhgqGCoYKhgqGLrj5Hvf4e0ctrdVD4/vCHalC9Djt7UhiQqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhi79UPAIu+6yru5d/vtg+mhfQxIVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQxNfLVizsfbJw425+PtDUlUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMLSs3095m/JllfM9r/4ZZamRaUiigqGCoU9dhB2shUEWJAAAAD10RVh0aWNjOmNvcHlyaWdodABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLp5m3CkAAAAjdEVYdGljYzpkZXNjcmlwdGlvbgBHZW5lcmljIFJHQiBQcm9maWxlGqc4jgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRTrLurLAAABe0lEQVR42u3cW06DQABAUTHdo3vQ9egeXKX+oh/CqSMM8Z6/pgnQm8zw7vLxEPF49gZcTcFQwdBt/WEZssjXHdPiy5hVHWT9g253L+UHTxvfv59d4BcakqhgqGDoT+awY5yzc7lwsHN2Lg1JVDBUMPRlDtszjY6ZSK97NvBt0t+aRkdNpEetZ7yGJCoYKhgqGCoYKhgqGLrj5Hvf4e0ctrdVD4/vCHalC9Djt7UhiQqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhi79UPAIu+6yru5d/vtg+mhfQxIVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQxNfLVizsfbJw425+PtDUlUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUMLSs3095m/JllfM9r/4ZZamRaUiigqGCoU9dhB2shUEWJAAAAD10RVh0aWNjOmNvcHlyaWdodABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLp5m3CkAAAAjdEVYdGljYzpkZXNjcmlwdGlvbgBHZW5lcmljIFJHQiBQcm9maWxlGqc4jgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">134 (57,8%)</td>
 <td style="text-align: center;">98 (42,2%)</td>
 </tr>
@@ -1165,7 +1172,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">35 valores distintos</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBR0ODBFbl6IsAAABfklEQVR42u3dUU7CQBRAUWrYo3vQ9egeXKX+VhNpjqVDW+/5IyTQ3PAInWnK9HmJeHr0ARxNwVDB0HX+YHr00fzqbfGr9nXDg5+/+fXPrzLY881nP4YdRyOJCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhg6za7TG0iadbNH9i2C3N+lsi66RRAVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUO7WQ9bvhJ/H3YT7J6LfFtqJNGOPmHrjBrp0wQbNdCNJCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGDrNAuIai6u1s6usC3axGyE1kqhgqGCoYKhgqGCoYKhgqGBo2C/9o1z/tWTgqdFe7sS6TiOJCoYKhgqGCoYKhgqGCoYKhgqGvp0aPfafN47hx7nkOc73ttRIooKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqFpvmb4fpILRu7tZbZsOtXINJKoYKhg6AvmEBpEk1LX4gAAAD10RVh0aWNjOmNvcHlyaWdodABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLp5m3CkAAAAjdEVYdGljYzpkZXNjcmlwdGlvbgBHZW5lcmljIFJHQiBQcm9maWxlGqc4jgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuCAQAAABxABKuAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfpBgMOGRTrLurLAAABfklEQVR42u3dUU7CQBRAUWrYo3vQ9egeXKX+VhNpjqVDW+/5IyTQ3PAInWnK9HmJeHr0ARxNwVDB0HX+YHr00fzqbfGr9nXDg5+/+fXPrzLY881nP4YdRyOJCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhg6za7TG0iadbNH9i2C3N+lsi66RRAVDBUMFQwVDBUMFQwVDBUMFQwVDBUMFQwVDBUO7WQ9bvhJ/H3YT7J6LfFtqJNGOPmHrjBrp0wQbNdCNJCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqGDrNAuIai6u1s6usC3axGyE1kqhgqGCoYKhgqGCoYKhgqGBo2C/9o1z/tWTgqdFe7sS6TiOJCoYKhgqGCoYKhgqGCoYKhgqGvp0aPfafN47hx7nkOc73ttRIooKhgqGCoYKhgqGCoYKhgqGCoYKhgqGCoYKhgqFpvmb4fpILRu7tZbZsOtXINJKoYKhg6AvmEBpEk1LX4gAAAD10RVh0aWNjOmNvcHlyaWdodABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLp5m3CkAAAAjdEVYdGljYzpkZXNjcmlwdGlvbgBHZW5lcmljIFJHQiBQcm9maWxlGqc4jgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">133 (57,3%)</td>
 <td style="text-align: center;">99 (42,7%)</td>
 </tr>
@@ -1301,10 +1308,14 @@ window.Quarto = {
 Call: KMO(r = subset_a)
 Overall MSA =  0,7
 MSA for each item = 
-            aoj11 evadir_transporte  evadir_impuestos   aceptar_soborno 
-             0,71              0,89              0,63              0,67 
-  confiar_vecinos               it1           vic1ext   orgullonacional 
-             0,75              0,80              0,64              0,25 </code></pre>
+    seguridad_subjetiva_lapop         evadir_transporte_wvs 
+                         0,71                          0,89 
+         evadir_impuestos_wvs           aceptar_soborno_wvs 
+                         0,63                          0,67 
+          confiar_vecinos_wvs confianza_interpersonal_lapop 
+                         0,75                          0,80 
+     seguridad_objetiva_lapop          orgullo_nacional_wvs 
+                         0,64                          0,25 </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>R was not square, finding R from data</code></pre>
@@ -1331,15 +1342,15 @@ $df
 <pre><code>Factor Analysis using method =  ml
 Call: fa(r = subset_a, nfactors = 2, rotate = "none", fm = "ml")
 Standardized loadings (pattern matrix) based upon correlation matrix
-                    ML1   ML2   h2    u2 com
-aoj11                    0,73 0,54 0,455 1,0
-evadir_transporte  0,82       0,79 0,206 1,4
-evadir_impuestos   1,00       1,00 0,005 1,0
-aceptar_soborno    0,91       0,84 0,157 1,0
-confiar_vecinos          0,77 0,75 0,250 1,5
-it1                0,46  0,72 0,72 0,276 1,7
-vic1ext                  0,61 0,37 0,626 1,0
-orgullonacional               0,23 0,767 2,0
+                                ML1   ML2   h2    u2 com
+seguridad_subjetiva_lapop            0,73 0,54 0,455 1,0
+evadir_transporte_wvs          0,82       0,79 0,206 1,4
+evadir_impuestos_wvs           1,00       1,00 0,005 1,0
+aceptar_soborno_wvs            0,91       0,84 0,157 1,0
+confiar_vecinos_wvs                  0,77 0,75 0,250 1,5
+confianza_interpersonal_lapop  0,46  0,72 0,72 0,276 1,7
+seguridad_objetiva_lapop             0,61 0,37 0,626 1,0
+orgullo_nacional_wvs                      0,23 0,767 2,0
 
                        ML1  ML2
 SS loadings           2,97 2,29
@@ -1377,15 +1388,15 @@ Minimum correlation of possible factor scores     0,99 0,75</code></pre>
 <pre><code>Factor Analysis using method =  ml
 Call: fa(r = subset_a, nfactors = 3, rotate = "none", fm = "ml")
 Standardized loadings (pattern matrix) based upon correlation matrix
-                    ML2   ML3   ML1   h2    u2 com
-aoj11                    0,71       0,57 0,431 1,2
-evadir_transporte  0,85             0,80 0,199 1,2
-evadir_impuestos   0,88        0,45 0,98 0,019 1,5
-aceptar_soborno    0,93             0,90 0,102 1,1
-confiar_vecinos    0,55  0,65       0,75 0,251 2,0
-it1                0,53  0,70       0,78 0,219 1,9
-vic1ext                  0,54       0,37 0,632 1,5
-orgullonacional                0,99 1,00 0,005 1,0
+                                ML2   ML3   ML1   h2    u2 com
+seguridad_subjetiva_lapop            0,71       0,57 0,431 1,2
+evadir_transporte_wvs          0,85             0,80 0,199 1,2
+evadir_impuestos_wvs           0,88        0,45 0,98 0,019 1,5
+aceptar_soborno_wvs            0,93             0,90 0,102 1,1
+confiar_vecinos_wvs            0,55  0,65       0,75 0,251 2,0
+confianza_interpersonal_lapop  0,53  0,70       0,78 0,219 1,9
+seguridad_objetiva_lapop             0,54       0,37 0,632 1,5
+orgullo_nacional_wvs                       0,99 1,00 0,005 1,0
 
                        ML2  ML3  ML1
 SS loadings           3,01 1,78 1,35
@@ -1423,15 +1434,15 @@ Minimum correlation of possible factor scores     0,97 0,72 0,99</code></pre>
 <pre><code>Factor Analysis using method =  ml
 Call: fa(r = subset_a, nfactors = 4, rotate = "none", fm = "ml")
 Standardized loadings (pattern matrix) based upon correlation matrix
-                    ML1   ML2   ML3   ML4   h2    u2 com
-aoj11              0,55        0,76       0,93 0,071 2,0
-evadir_transporte  0,71  0,54             0,80 0,197 1,9
-evadir_impuestos   0,49  0,86             0,98 0,021 1,6
-aceptar_soborno    0,55  0,76             0,93 0,066 2,1
-confiar_vecinos    0,99                   1,00 0,005 1,0
-it1                0,81                   0,71 0,292 1,2
-vic1ext                        0,63       0,63 0,374 2,2
-orgullonacional          0,44        0,72 0,73 0,270 1,7
+                                ML1   ML2   ML3   ML4   h2    u2 com
+seguridad_subjetiva_lapop      0,55        0,76       0,93 0,071 2,0
+evadir_transporte_wvs          0,71  0,54             0,80 0,197 1,9
+evadir_impuestos_wvs           0,49  0,86             0,98 0,021 1,6
+aceptar_soborno_wvs            0,55  0,76             0,93 0,066 2,1
+confiar_vecinos_wvs            0,99                   1,00 0,005 1,0
+confianza_interpersonal_lapop  0,81                   0,71 0,292 1,2
+seguridad_objetiva_lapop                   0,63       0,63 0,374 2,2
+orgullo_nacional_wvs                 0,44        0,72 0,73 0,270 1,7
 
                        ML1  ML2  ML3  ML4
 SS loadings           3,10 1,94 1,03 0,63
@@ -1473,15 +1484,15 @@ Minimum correlation of possible factor scores     0,99 0,96 0,81 0,52</code></pr
 <pre><code>Factor Analysis using method =  ml
 Call: fa(r = subset_a, nfactors = 4, rotate = "oblimin", fm = "ml")
 Standardized loadings (pattern matrix) based upon correlation matrix
-                    ML2   ML3   ML1   ML4   h2    u2 com
-aoj11                    0,93             0,93 0,071 1,0
-evadir_transporte  0,72                   0,80 0,197 1,3
-evadir_impuestos   0,93                   0,98 0,021 1,1
-aceptar_soborno    1,01                   0,93 0,066 1,0
-confiar_vecinos                1,00       1,00 0,005 1,0
-it1                            0,61       0,71 0,292 1,6
-vic1ext                  0,79             0,63 0,374 1,1
-orgullonacional                      0,84 0,73 0,270 1,0
+                                ML2   ML3   ML1   ML4   h2    u2 com
+seguridad_subjetiva_lapop            0,93             0,93 0,071 1,0
+evadir_transporte_wvs          0,72                   0,80 0,197 1,3
+evadir_impuestos_wvs           0,93                   0,98 0,021 1,1
+aceptar_soborno_wvs            1,01                   0,93 0,066 1,0
+confiar_vecinos_wvs                        1,00       1,00 0,005 1,0
+confianza_interpersonal_lapop              0,61       0,71 0,292 1,6
+seguridad_objetiva_lapop             0,79             0,63 0,374 1,1
+orgullo_nacional_wvs                             0,84 0,73 0,270 1,0
 
                        ML2  ML3  ML1  ML4
 SS loadings           2,55 1,66 1,66 0,84
@@ -1569,12 +1580,16 @@ Minimum correlation of possible factor scores     0,96 0,87 0,99 0,63</code></pr
 Call: KMO(r = subset_b)
 Overall MSA =  0,76
 MSA for each item = 
-            aoj11 evadir_transporte  evadir_impuestos   aceptar_soborno 
-             0,75              0,85              0,70              0,77 
-  confiar_vecinos               it1           vic1ext                b4 
-             0,79              0,87              0,62              0,72 
-               b6 
-             0,69 </code></pre>
+       seguridad_subjetiva_lapop            evadir_transporte_wvs 
+                            0,75                             0,85 
+            evadir_impuestos_wvs              aceptar_soborno_wvs 
+                            0,70                             0,77 
+             confiar_vecinos_wvs    confianza_interpersonal_lapop 
+                            0,79                             0,87 
+        seguridad_objetiva_lapop      orgullo_sist_politico_lapop 
+                            0,62                             0,72 
+deber_apoyar_sist_politico_lapop 
+                            0,69 </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>R was not square, finding R from data</code></pre>
@@ -1601,16 +1616,16 @@ $df
 <pre><code>Factor Analysis using method =  ml
 Call: fa(r = subset_b, nfactors = 4, rotate = "none", fm = "ml")
 Standardized loadings (pattern matrix) based upon correlation matrix
-                   ML1   ML2   ML3   ML4   h2     u2 com
-aoj11             0,55              0,70 0,88 0,1175 2,3
-evadir_transporte 0,73  0,47             0,82 0,1763 2,0
-evadir_impuestos  0,54  0,81             0,97 0,0287 1,8
-aceptar_soborno   0,58  0,69             0,88 0,1240 2,3
-confiar_vecinos   0,97                   0,99 0,0088 1,1
-it1               0,82                   0,71 0,2944 1,1
-vic1ext                             0,66 0,63 0,3671 1,9
-b4                0,58        0,70       0,87 0,1286 2,2
-b6                0,57        0,75       0,95 0,0550 2,1
+                                  ML1   ML2   ML3   ML4   h2     u2 com
+seguridad_subjetiva_lapop        0,55              0,70 0,88 0,1175 2,3
+evadir_transporte_wvs            0,73  0,47             0,82 0,1763 2,0
+evadir_impuestos_wvs             0,54  0,81             0,97 0,0287 1,8
+aceptar_soborno_wvs              0,58  0,69             0,88 0,1240 2,3
+confiar_vecinos_wvs              0,97                   0,99 0,0088 1,1
+confianza_interpersonal_lapop    0,82                   0,71 0,2944 1,1
+seguridad_objetiva_lapop                           0,66 0,63 0,3671 1,9
+orgullo_sist_politico_lapop      0,58        0,70       0,87 0,1286 2,2
+deber_apoyar_sist_politico_lapop 0,57        0,75       0,95 0,0550 2,1
 
                        ML1  ML2  ML3  ML4
 SS loadings           3,85 1,65 1,22 0,98
@@ -1649,16 +1664,16 @@ Minimum correlation of possible factor scores     0,99 0,94 0,88 0,71</code></pr
 <pre><code>Factor Analysis using method =  ml
 Call: fa(r = subset_b, nfactors = 4, rotate = "oblimin", fm = "ml")
 Standardized loadings (pattern matrix) based upon correlation matrix
-                    ML2   ML3   ML4   ML1   h2     u2 com
-aoj11                          0,90       0,88 0,1175 1,0
-evadir_transporte  0,76                   0,82 0,1763 1,3
-evadir_impuestos   0,99                   0,97 0,0287 1,1
-aceptar_soborno    0,95                   0,88 0,1240 1,0
-confiar_vecinos                      0,98 0,99 0,0088 1,0
-it1                                  0,50 0,71 0,2944 2,0
-vic1ext                        0,84       0,63 0,3671 1,0
-b4                       0,90             0,87 0,1286 1,0
-b6                       0,97             0,95 0,0550 1,0
+                                   ML2   ML3   ML4   ML1   h2     u2 com
+seguridad_subjetiva_lapop                     0,90       0,88 0,1175 1,0
+evadir_transporte_wvs             0,76                   0,82 0,1763 1,3
+evadir_impuestos_wvs              0,99                   0,97 0,0287 1,1
+aceptar_soborno_wvs               0,95                   0,88 0,1240 1,0
+confiar_vecinos_wvs                                 0,98 0,99 0,0088 1,0
+confianza_interpersonal_lapop                       0,50 0,71 0,2944 2,0
+seguridad_objetiva_lapop                      0,84       0,63 0,3671 1,0
+orgullo_sist_politico_lapop             0,90             0,87 0,1286 1,0
+deber_apoyar_sist_politico_lapop        0,97             0,95 0,0550 1,0
 
                        ML2  ML3  ML4  ML1
 SS loadings           2,60 1,90 1,66 1,53
@@ -2181,6 +2196,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./cohesion-vertical.html" class="pagination-link" aria-label="Cohesión Vertical">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cohesión Vertical</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
