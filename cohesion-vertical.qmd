@@ -473,3 +473,19 @@ chart.Correlation(datos %>%
 ```
 
 El indicador muestra correlaciones moderadas con los indicadores de democracia y confianza en las instituciones. 
+
+
+```{r}
+
+# Calcular indice de cohesión vertical
+
+datos <- datos %>%
+  group_by(wave,pais)%>%
+  mutate(cohesion_vertical = mean_na(mean_na(sub_confianza_inst,
+                                             sub_democracia,
+                                             justicia_distribucion)))
+
+save(datos, file="input/data/cohesion_vertical.RData")
+
+```
+

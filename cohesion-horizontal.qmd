@@ -676,22 +676,13 @@ chart.Correlation(datos %>%
 Al igual que en la propuesta anterior, se incluye una versión que cuenta exclusivamente con indicadores de LAPOP, lo que implica perder la subdimensión de comportamiento prosocial. Todas las correlaciones se mantienen sobre 0,3. 
 
 
-<!-- # Puntajes Factoriales -->
+```{r}
+datos <- datos %>%
+  group_by(wave,pais)%>%
+  mutate(sub_confianza = mean_na(mean_na(it1)),
+         sub_seguridad = mean_na(mean_na(aoj11, vic1ext)),
+         cohesion_horizontal= mean_na(mean_na(sub_confianza, sub_seguridad)))
 
-<!-- ```{r} -->
-<!-- datos_ma <- cbind(datos, ma_4f_rot$scores) -->
+save(datos, file="input/data/cohesion_horizontal.RData")
+```
 
-<!-- chart.Correlation(datos_ma %>% -->
-<!--                     ungroup() %>% -->
-<!--                     # filter(pais!="Haiti") %>% -->
-<!--                     select(ML1, ML2, ML3, ML4)) -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- datos_mb <- cbind(datos, mb_4f_rot$scores) -->
-
-<!-- chart.Correlation(datos_mb %>% -->
-<!--                     ungroup() %>% -->
-<!--                     # filter(pais!="Haiti") %>% -->
-<!--                     select(ML1, ML2, ML3, ML4)) -->
-<!-- ``` -->

@@ -1,0 +1,92 @@
+# Cohesión General
+
+```{r Carga de librerías, include=FALSE}
+
+rm(list = ls())
+
+# Carga de librerías
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, summarytools, PerformanceAnalytics, psych, lavaan)
+
+# Configuraciones
+options(scipen=999)
+st_options(lang='es')
+options(OutDec=",")
+
+# 3. Funcióm media sin NAs
+## Descripción:
+## Simple función que omite el agumento de rm.na=TRUE.
+# Argumentos:
+## ... = Valores a promediar.
+mean_na <- function(...) {
+  mean_result <- mean(c(...), na.rm = TRUE)
+  if (is.nan(mean_result)) {
+    mean_result <- NA
+  }
+  return(mean_result)
+}
+
+load("input/data/cohesion_horizontal.Rdata")
+cohesion_horizontal <- datos
+
+load("input/data/cohesion_vertical.Rdata")
+cohesion_vertical <- datos
+
+datos <- merge(cohesion_vertical, cohesion_horizontal, by=c("pais", "wave"), all= TRUE)
+```
+
+```{r}
+
+subset <- datos %>% select(sub_confianza_inst,
+                           sub_democracia,
+                           justicia_distribucion,
+                           sub_confianza,
+                           sub_seguridad)
+
+chart.Correlation(subset %>%
+                    ungroup())
+```
+
+```{r}
+KMO(subset)
+
+cortest.bartlett(subset)
+```
+
+
+```{r}
+set.seed(231018) # Resultado reproducible
+
+n_facts <- fa.parallel(subset, 
+                       fm = 'ml', fa = 'fa')
+```
+
+```{r echo=F}
+m1 <- fa(subset, nfactors = 2, 
+   fm = "ml", rotate = "none")
+
+print(m1, cut = 0.4)
+```
+```{r echo=F}
+m1_rot <- fa(subset, nfactors = 2, 
+   fm = "ml", rotate = "oblimin")
+
+print(m1_rot, cut = 0.4)
+```
+
+```{r}
+chart.Correlation(datos %>%
+                    ungroup() %>%
+                    # filter(pais!="Haiti") %>%
+                    select(cohesion_vertical,
+                           cohesion_horizontal))
+```
+
+```{r}
+datos <- datos %>%
+  group_by(wave,pais)%>%
+  mutate(cohesion_general = mean_na(mean_na(cohesion_vertical,
+                                            cohesion_horizontal)))
+
+save(datos, file="input/data/cohesion_merge.RData")
+```
