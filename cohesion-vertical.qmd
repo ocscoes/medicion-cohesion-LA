@@ -457,8 +457,7 @@ datos <- datos %>%
   group_by(wave,pais)%>%
   mutate(sub_confianza_inst = mean_na(mean_na(confianza_congreso,
            confianza_poder_judicial,
-           confianza_part_politicos_lapop,
-           confianza_ejecutivo)),
+           confianza_part_politicos_lapop)),
          sub_democracia = mean_na(mean_na(apoyo_democracia,
            satisfaccion_democracia)),
          sub_participacion= mean_na(mean_na(protestas_pacificas,

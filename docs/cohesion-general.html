@@ -178,22 +178,22 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell-output cell-output-stdout">
 <pre><code>Kaiser-Meyer-Olkin factor adequacy
 Call: KMO(r = subset)
-Overall MSA =  0,68
+Overall MSA =  0,7
 MSA for each item = 
    sub_confianza_inst        sub_democracia justicia_distribucion 
-                 0,71                  0,66                  0,66 
+                 0,78                  0,68                  0,56 
         sub_confianza         sub_seguridad 
-                 0,63                  0,76 </code></pre>
+                 0,67                  0,77 </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>R was not square, finding R from data</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$chisq
-[1] 372,3882
+[1] 354,2007
 
 $p.value
-[1] 0,00000000000000000000000000000000000000000000000000000000000000000000000007013815
+[1] 0,0000000000000000000000000000000000000000000000000000000000000000000005114842
 
 $df
 [1] 10</code></pre>
@@ -217,40 +217,40 @@ $df
 Call: fa(r = subset, nfactors = 2, rotate = "none", fm = "ml")
 Standardized loadings (pattern matrix) based upon correlation matrix
                        ML1   ML2   h2    u2 com
-sub_confianza_inst          0,69 0,58 0,416 1,4
-sub_democracia        0,57  0,65 0,74 0,256 2,0
-justicia_distribucion       0,50 0,25 0,746 1,0
+sub_confianza_inst    0,41  0,55 0,47 0,526 1,9
+sub_democracia        0,57  0,67 0,77 0,228 2,0
+justicia_distribucion       0,48 0,23 0,765 1,0
 sub_confianza         1,00       1,00 0,005 1,0
-sub_seguridad         0,54       0,32 0,682 1,2
+sub_seguridad         0,54       0,32 0,681 1,2
 
                        ML1  ML2
-SS loadings           1,72 1,18
-Proportion Var        0,34 0,24
-Cumulative Var        0,34 0,58
-Proportion Explained  0,59 0,41
-Cumulative Proportion 0,59 1,00
+SS loadings           1,78 1,01
+Proportion Var        0,36 0,20
+Cumulative Var        0,36 0,56
+Proportion Explained  0,64 0,36
+Cumulative Proportion 0,64 1,00
 
-Mean item complexity =  1,3
+Mean item complexity =  1,4
 Test of the hypothesis that 2 factors are sufficient.
 
-df null model =  10  with the objective function =  1,47 with Chi Square =  372,39
+df null model =  10  with the objective function =  1,4 with Chi Square =  354,2
 df of  the model are 1  and the objective function was  0 
 
-The root mean square of the residuals (RMSR) is  0 
-The df corrected root mean square of the residuals is  0,01 
+The root mean square of the residuals (RMSR) is  0,01 
+The df corrected root mean square of the residuals is  0,04 
 
-The harmonic n.obs is  215 with the empirical chi square  0,07  with prob &lt;  0,79 
-The total n.obs was  256  with Likelihood Chi Square =  0,15  with prob &lt;  0,7 
+The harmonic n.obs is  215 with the empirical chi square  0,58  with prob &lt;  0,45 
+The total n.obs was  256  with Likelihood Chi Square =  1,05  with prob &lt;  0,3 
 
-Tucker Lewis Index of factoring reliability =  1,024
-RMSEA index =  0  and the 90 % confidence intervals are  0 0,122
-BIC =  -5,39
+Tucker Lewis Index of factoring reliability =  0,998
+RMSEA index =  0,014  and the 90 % confidence intervals are  0 0,167
+BIC =  -4,49
 Fit based upon off diagonal values = 1
 Measures of factor score adequacy             
                                                    ML1  ML2
-Correlation of (regression) scores with factors   1,00 0,87
-Multiple R square of scores with factors          1,00 0,76
-Minimum correlation of possible factor scores     0,99 0,52</code></pre>
+Correlation of (regression) scores with factors   1,00 0,86
+Multiple R square of scores with factors          1,00 0,74
+Minimum correlation of possible factor scores     0,99 0,49</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -262,45 +262,45 @@ Minimum correlation of possible factor scores     0,99 0,52</code></pre>
 Call: fa(r = subset, nfactors = 2, rotate = "oblimin", fm = "ml")
 Standardized loadings (pattern matrix) based upon correlation matrix
                        ML2   ML1   h2    u2 com
-sub_confianza_inst    0,78       0,58 0,416 1,0
-sub_democracia        0,74       0,74 0,256 1,2
-justicia_distribucion 0,57       0,25 0,746 1,3
+sub_confianza_inst    0,67       0,47 0,526 1,0
+sub_democracia        0,81       0,77 0,228 1,0
+justicia_distribucion 0,57       0,23 0,765 1,5
 sub_confianza               0,99 1,00 0,005 1,0
-sub_seguridad               0,44 0,32 0,682 1,4
+sub_seguridad               0,41 0,32 0,681 1,5
 
                        ML2  ML1
-SS loadings           1,57 1,33
-Proportion Var        0,31 0,27
-Cumulative Var        0,31 0,58
+SS loadings           1,52 1,28
+Proportion Var        0,30 0,26
+Cumulative Var        0,30 0,56
 Proportion Explained  0,54 0,46
 Cumulative Proportion 0,54 1,00
 
  With factor correlations of 
      ML2  ML1
-ML2 1,00 0,46
-ML1 0,46 1,00
+ML2 1,00 0,53
+ML1 0,53 1,00
 
 Mean item complexity =  1,2
 Test of the hypothesis that 2 factors are sufficient.
 
-df null model =  10  with the objective function =  1,47 with Chi Square =  372,39
+df null model =  10  with the objective function =  1,4 with Chi Square =  354,2
 df of  the model are 1  and the objective function was  0 
 
-The root mean square of the residuals (RMSR) is  0 
-The df corrected root mean square of the residuals is  0,01 
+The root mean square of the residuals (RMSR) is  0,01 
+The df corrected root mean square of the residuals is  0,04 
 
-The harmonic n.obs is  215 with the empirical chi square  0,07  with prob &lt;  0,79 
-The total n.obs was  256  with Likelihood Chi Square =  0,15  with prob &lt;  0,7 
+The harmonic n.obs is  215 with the empirical chi square  0,58  with prob &lt;  0,45 
+The total n.obs was  256  with Likelihood Chi Square =  1,05  with prob &lt;  0,3 
 
-Tucker Lewis Index of factoring reliability =  1,024
-RMSEA index =  0  and the 90 % confidence intervals are  0 0,122
-BIC =  -5,39
+Tucker Lewis Index of factoring reliability =  0,998
+RMSEA index =  0,014  and the 90 % confidence intervals are  0 0,167
+BIC =  -4,49
 Fit based upon off diagonal values = 1
 Measures of factor score adequacy             
                                                    ML2  ML1
-Correlation of (regression) scores with factors   0,90 1,00
-Multiple R square of scores with factors          0,81 0,99
-Minimum correlation of possible factor scores     0,63 0,99</code></pre>
+Correlation of (regression) scores with factors   0,91 1,00
+Multiple R square of scores with factors          0,82 0,99
+Minimum correlation of possible factor scores     0,65 0,99</code></pre>
 </div>
 </div>
 <div class="cell">
