@@ -453,6 +453,40 @@ Se mantienen los factores relacionados a instituciones y democracia. El nuevo in
 **Calcular puntajes**
 
 ```{r echo=F}
+# Calidad subdimensiones
+
+calidad_year <- datos %>%
+  as.data.frame %>%
+  select(-c(pais, wave)) %>%
+  mutate(across(everything(), ~ !is.na(.))) %>%
+  as.data.frame() %>%
+  mutate(
+    sub_confianza_inst  = ifelse(rowSums(cbind(confianza_congreso,
+                                                        confianza_part_politicos_lapop,
+                                                        confianza_poder_judicial)) > 1, FALSE, TRUE),
+    sub_democracia = ifelse(rowSums(cbind(apoyo_democracia, satisfaccion_democracia)) > 1, FALSE, TRUE),
+    justicia_distribucion = ifelse(rowSums(cbind(justicia_distribucion)) > 0, FALSE, TRUE),
+  ) %>%
+  select(c("sub_confianza_inst",
+           "sub_democracia",
+           "justicia_distribucion")) %>%
+  mutate(
+    pais = datos$pais,
+    wave = datos$wave
+  ) %>%
+  select(pais,wave,everything())
+
+
+for(i in 1:nrow(datos)){
+  # print(i)
+  for(x in names(calidad_year)[3:5]){
+    if(calidad_year[i,x]){
+      datos[i,x] <- NA
+    }
+  }
+}
+
+
 datos <- datos %>%
   group_by(wave,pais)%>%
   mutate(sub_confianza_inst = mean_na(mean_na(confianza_congreso,
@@ -477,6 +511,31 @@ El indicador muestra correlaciones moderadas con los indicadores de democracia y
 ```{r}
 
 # Calcular indice de cohesión vertical
+
+calidad_year <- datos %>%
+  as.data.frame %>%
+  select(-c(pais, wave)) %>%
+  mutate(across(everything(), ~ !is.na(.))) %>%
+  as.data.frame() %>%
+  mutate(
+   cohesion_vertical = ifelse(rowSums(cbind(sub_confianza_inst, sub_democracia, justicia_distribucion)) > 1, FALSE, TRUE)) %>%
+  select(c(cohesion_vertical)) %>%
+  mutate(
+    pais = datos$pais,
+    wave = datos$wave
+  ) %>%
+  select(pais,wave,everything())
+
+
+for(i in 1:nrow(datos)){
+  # print(i)
+  for(x in names(calidad_year)[3]){
+    if(calidad_year[i,x]){
+      datos[i,x] <- NA
+    }
+  }
+}
+
 
 datos <- datos %>%
   group_by(wave,pais)%>%

@@ -75,6 +75,29 @@ print(m1_rot, cut = 0.4)
 ```
 
 ```{r}
+
+calidad_year <- datos %>%
+  as.data.frame %>%
+  select(-c(pais, wave)) %>%
+  mutate(across(everything(), ~ !is.na(.))) %>%
+  as.data.frame() %>%
+  mutate(
+    cohesion_general   = ifelse(rowSums(cbind(cohesion_vertical,
+                                              cohesion_horizontal)) > 1, FALSE, TRUE)) %>%
+  select(c(cohesion_general)) %>%
+  mutate(
+    pais = datos$pais,
+    wave = datos$wave
+  ) %>%
+  select(pais,wave,everything())
+
+columnas_objetivo <- c("cohesion_general")  # Agrega más si lo deseas
+for(i in 1:nrow(datos)) {
+  if (isTRUE(calidad_year$cohesion_general[i])) {
+    datos[i, columnas_objetivo] <- NA
+  }
+}
+
 chart.Correlation(datos %>%
                     ungroup() %>%
                     # filter(pais!="Haiti") %>%

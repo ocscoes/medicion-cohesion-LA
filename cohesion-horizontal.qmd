@@ -661,6 +661,38 @@ En esta nueva propuesta, todas las correlaciones son superiores a 0,3, salvo las
 **Correlaciones subdimensiones solo LAPOP**
 
 ```{r echo=F}
+
+# Calidad subdimensiones
+
+calidad_year <- datos %>%
+  as.data.frame %>%
+  select(-c(pais, wave)) %>%
+  mutate(across(everything(), ~ !is.na(.))) %>%
+  as.data.frame() %>%
+  mutate(
+    sub_confianza   = ifelse(rowSums(cbind(it1)) > 0, FALSE, TRUE),
+    sub_seguridad  = ifelse(rowSums(cbind(aoj11, vic1ext)) > 1, FALSE, TRUE),
+    sub_orgullo  = ifelse(rowSums(cbind(b4,b6)) > 1, FALSE, TRUE)) %>%
+  select(c("sub_confianza",
+           "sub_seguridad",
+           "sub_orgullo")) %>%
+  mutate(
+    pais = datos$pais,
+    wave = datos$wave
+  ) %>%
+  select(pais,wave,everything())
+
+
+for(i in 1:nrow(datos)){
+  # print(i)
+  for(x in names(calidad_year)[3:5]){
+    if(calidad_year[i,x]){
+      datos[i,x] <- NA
+    }
+  }
+}
+
+
 datos <- datos %>%
   group_by(wave,pais)%>%
   mutate(sub_confianza = mean_na(mean_na(it1)),
@@ -677,11 +709,40 @@ Al igual que en la propuesta anterior, se incluye una versión que cuenta exclus
 
 
 ```{r}
+
 datos <- datos %>%
   group_by(wave,pais)%>%
   mutate(sub_confianza = mean_na(mean_na(it1)),
-         sub_seguridad = mean_na(mean_na(aoj11, vic1ext)),
-         cohesion_horizontal= mean_na(mean_na(sub_confianza, sub_seguridad)))
+         sub_seguridad = mean_na(mean_na(aoj11, vic1ext)))
+
+
+calidad_year <- datos %>%
+  as.data.frame %>%
+  select(-c(pais, wave)) %>%
+  mutate(across(everything(), ~ !is.na(.))) %>%
+  as.data.frame() %>%
+  mutate(
+    cohesion_horizontal   = ifelse(rowSums(cbind(sub_confianza, sub_seguridad)) > 1, FALSE, TRUE)) %>%
+  select(c(cohesion_horizontal)) %>%
+  mutate(
+    pais = datos$pais,
+    wave = datos$wave
+  ) %>%
+  select(pais,wave,everything())
+
+
+for(i in 1:nrow(datos)){
+  # print(i)
+  for(x in names(calidad_year)[3]){
+    if(calidad_year[i,x]){
+      datos[i,x] <- NA
+    }
+  }
+}
+
+datos <- datos %>%
+  group_by(wave,pais)%>%
+  mutate(cohesion_horizontal= mean_na(mean_na(sub_confianza, sub_seguridad)))
 
 save(datos, file="input/data/cohesion_horizontal.RData")
 ```
