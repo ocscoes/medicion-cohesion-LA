@@ -1,5 +1,72 @@
 ## Introducción
 
-Este documento tiene como objetivo presentar un índice elaborado por el OCS para la medición de la cohesión social enfocado en la región latinoamericana. Para ello, se presentan los puntos de referencia principales 
+Este documento tiene como objetivo presentar un índice elaborado por el OBservatorio de Cohesión Social de COES para la medición de la cohesión social enfocado en la región latinoamericana. Para ello, se presentan los puntos de referencia principales 
 
 A partir de todo lo anterior, se espera que este documento pueda servir como insumo para aquellos que deseen utilizar el visualizador del observatorio, con tal de aprovechar al máximo las posibilidades que ofrecen los datos para el análisis longitudinal y/o comparado en los países de América Latina. 
+
+
+## Países participantes y años analizados
+
+```{r Carga de librerías, include=FALSE}
+
+rm(list = ls())
+
+# Carga de librerías
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, summarytools, PerformanceAnalytics, psych, lavaan)
+
+# Configuraciones
+options(scipen=999)
+st_options(lang='es')
+options(OutDec=",")
+
+# 3. Funcióm media sin NAs
+## Descripción:
+## Simple función que omite el agumento de rm.na=TRUE.
+# Argumentos:
+## ... = Valores a promediar.
+mean_na <- function(...) {
+  mean_result <- mean(c(...), na.rm = TRUE)
+  if (is.nan(mean_result)) {
+    mean_result <- NA
+  }
+  return(mean_result)
+}
+
+load("input/data/datos_horizontal.Rdata")
+
+datos[] <- lapply(datos, function(col) {
+  col[is.nan(col)] <- NA
+  col
+})
+
+
+```
+
+```{r}
+#| label: descriptivos-países
+#| fig-cap: "Descriptivos de los países participantes"
+#| echo: false
+#| results: asis
+
+datos <- datos %>%
+  ungroup()
+
+datos_pertenencia <- datos %>%
+  select(c("pais", "wave")) %>%
+  setNames(c("pais","wave"))
+
+print(dfSummary(datos_pertenencia,
+          headings=FALSE,
+          style = "multiline",
+          plain.ascii = FALSE,
+          tmp.img.dir = 'tmp',
+          varnumbers = FALSE,
+          silent= TRUE,
+          split.by = NULL),
+      max.tbl.height = 500,
+      method = 'render',
+      # css.class = 'table',
+      silent = TRUE,
+      footnote = NA)
+```

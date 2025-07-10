@@ -1,3 +1,4 @@
 ## Abstract {.unnumbered}
 
-En este documento explicamos la construcción de indicadores para la medición de indicadores de cohesión social en América Latina a partir de datos de LAPOP, Latinobarometro y la Encuesta Mundial de Valores. 
+Este documento corresponde al reporte técnico y metodológico que permite comprender la construcción de indicares utilizados para la medición de la cohesión social en América Latina. En este proceso de operacionalización de la cohesión social se utilizan datos provenientes de distintas fuentes -principalmente [LAPOP](https://www.vanderbilt.edu/lapop/chile.php), [Latinobarómetro](https://www.latinobarometro.org/lat.jsp) y la [Encuesta Mundial de valores](https://www.worldvaluessurvey.org/wvs.jsp)-
+

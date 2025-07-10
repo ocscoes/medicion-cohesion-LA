@@ -4,11 +4,13 @@ project:
 
 execute:
    echo: false
+   warning: false
+   message: false
 
 book:
   title: "Medición Cohesión Social América Latina"
   author: "Observatorio de Cohesión Social"
-  date: "2025"
+  date: today
   chapters:
     - index.qmd
     - intro.qmd
@@ -23,3 +25,4 @@ format:
     theme: cosmo
   # pdf:
   #   documentclass: scrreprt
+lang: es
