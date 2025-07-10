@@ -1,12 +1,14 @@
 # Cohesión General
 
+Como propuesta de medición, en este apartado se intenta elaborar un resumen de ambas dimensiones (horizontal y vertical) que permita dar a conocer la relación existente entre las subdimensiones y sus indicadores. La @fig-correlaciones-general muestra la correlación enre estas subdimensiones.
+
 ```{r Carga de librerías, include=FALSE}
 
 rm(list = ls())
 
 # Carga de librerías
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(tidyverse, summarytools, PerformanceAnalytics, psych, lavaan)
+pacman::p_load(tidyverse, summarytools, PerformanceAnalytics, psych, lavaan, kableExtra)
 
 # Configuraciones
 options(scipen=999)
@@ -36,6 +38,10 @@ datos <- merge(cohesion_vertical, cohesion_horizontal, by=c("pais", "wave"), all
 ```
 
 ```{r}
+#| label: fig-correlaciones-general
+#| fig-cap: "Correlaciones subdimensiones de confianza instituciones, democracia, justicia distributiva, confianza social y seguridad"
+#| echo: false
+#| results: asis
 
 subset <- datos %>% select(sub_confianza_inst,
                            sub_democracia,
@@ -47,10 +53,38 @@ chart.Correlation(subset %>%
                     ungroup())
 ```
 
-```{r}
-KMO(subset)
+El test KMO (general=0.7) y el test de esfericidad de Bartlett muestran que en general existe un buen ajuste en los datos.
 
-cortest.bartlett(subset)
+```{r}
+kmo_result <- KMO(subset)
+
+# MSA individual por variable
+msa_items <- kmo_result$MSAi
+
+# Nombre de variables
+variables <- names(msa_items)
+
+# MSA overall
+overall <- kmo_result$MSA
+
+# Crear tabla
+kmo_table <- tibble(
+  Variable = c("KMO Overall", variables),
+  MSA = c(round(overall, 3), round(msa_items, 3))
+)
+
+kable(kmo_table, caption = "KMO: índice general y por variable")
+
+
+bartlett_result <- cortest.bartlett(subset)
+
+bartlett_table <- tibble(
+  Statistic = round(bartlett_result$chisq, 3),
+  df = bartlett_result$df,
+  p_value = round(bartlett_result$p.value, 3)
+)
+
+kable(bartlett_table, caption = "Test de esfericidad de Bartlett")
 ```
 
 
@@ -61,21 +95,27 @@ n_facts <- fa.parallel(subset,
                        fm = 'ml', fa = 'fa')
 ```
 
+El análisis paralelo sugiere la existencia de dos factores.
+
 ```{r echo=F}
 m1 <- fa(subset, nfactors = 2, 
    fm = "ml", rotate = "none")
 
-print(m1, cut = 0.4)
+sjPlot::tab_fa(subset, nmbr.fctr = 2, method = "ml", show.comm = TRUE)
 ```
+
+El AFE muestra dos factores con las subdimensiones adecuadas para las dimensiones horizontal y verticual.
+
 ```{r echo=F}
 m1_rot <- fa(subset, nfactors = 2, 
    fm = "ml", rotate = "oblimin")
 
-print(m1_rot, cut = 0.4)
+sjPlot::tab_fa(subset, nmbr.fctr = 2, method = "ml", rotation = "oblimin", show.comm = TRUE)
 ```
 
-```{r}
+Luego de rotar la estimación del AFE, el ajuste mejora.
 
+```{r}
 calidad_year <- datos %>%
   as.data.frame %>%
   select(-c(pais, wave)) %>%
@@ -97,6 +137,12 @@ for(i in 1:nrow(datos)) {
     datos[i, columnas_objetivo] <- NA
   }
 }
+```
+
+
+```{r}
+#| label: fig-correlacion-general
+#| fig-cap: "Correlación entre Dimensión Horizontal y Dimensión Vertical"
 
 chart.Correlation(datos %>%
                     ungroup() %>%
@@ -104,6 +150,8 @@ chart.Correlation(datos %>%
                     select(cohesion_vertical,
                            cohesion_horizontal))
 ```
+
+Finalmente, la @fig-correlacion-general muestra la asociación entre ambas dimensiones. Esta correlación es alta y es significativa (r=0.61; p<0.001). Esto da cuenta de que, en general, ambas dimensiones de la cohesión social varían de la misma forma.
 
 ```{r}
 datos <- datos %>%

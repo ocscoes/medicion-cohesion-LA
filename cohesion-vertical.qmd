@@ -1,4 +1,4 @@
-## Cohesión Vertical
+# Cohesión Vertical
 
 ```{r Carga de librerías, include=FALSE}
 
@@ -6,7 +6,7 @@ rm(list = ls())
 
 # Carga de librerías
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(tidyverse, summarytools, PerformanceAnalytics, psych, lavaan)
+pacman::p_load(tidyverse, summarytools, PerformanceAnalytics, psych, lavaan, kableExtra)
 
 # Configuraciones
 options(scipen=999)
@@ -32,7 +32,7 @@ datos <- datos %>%
   ungroup()
 
 datos <- datos %>%
-  setNames(c("pais","wave",
+  setNames(c("pais", "wave",
              "reuniones_religiosas", #cp6
              "asociaciones_padres",  #cp7
              "reuniones_comunidad", #cp8
@@ -71,7 +71,7 @@ datos <- datos %>%
              "participacion_huelgas",
              "justicia_distribucion"))
 
-lapop <- datos %>% select(1:27)
+lapop <- datos %>% select(3:27)
 
 lapop[] <- lapply(lapop, function(col) {
   col[is.nan(col)] <- NA
@@ -83,10 +83,11 @@ lapop[] <- lapply(lapop, function(col) {
 
 ## Descripción de las Variables
 
-Se seleccionaron variables dentro de LAPOP que abordaran las subdimensiones definidas para la dimensión vertical de la Cohesión Vertical. Éstas incluyen pregunta sobre confianza en autoridades e instituciones, legitimidad del sistema democrático, participación cívica y política, percepciones de justicia, meritocracia y corrupación. A continuación se hace un resumen descriptivo de las variables seleccionadas. 
+Se seleccionaron variables dentro de LAPOP que abordaran las subdimensiones definidas para la dimensión vertical de la Cohesión Social. Estas variables incluyen preguntas sobre confianza en autoridades e instituciones, legitimidad del sistema democrático, participación cívica y política, percepciones de justicia, meritocracia y corrupción. La @tbl-descriptivos-LAPOP muestra un resumen descriptivo de las variables seleccionadas. 
 
-```{r Descriptivos LAPOP, results='asis'}
-# Tabla hecha con summarytools:dfSummary()
+```{r , results='asis'}
+#| label: tbl-descriptivos-LAPOP
+#| fig-cap: "Estadísticos descriptivos de Democracia, Autoridad e Instituciones"
 
 print(dfSummary(lapop,
           headings=FALSE,
@@ -118,8 +119,10 @@ print(dfSummary(lapop,
 
 ## Indicadores de Democracia, Autoridad e Instituciones
 
+Una primera subdimensión aborda variables referentes a confianza en instituciones, apoyo a la democracia y satisfacción con la democracia. En la @fig-correlaciones-democracia se muestran las correlaciones de estas variables.
+
 ```{r}
-#| label: correlaciones-democracia
+#| label: fig-correlaciones-democracia
 #| fig-cap: "Correlaciones Democracia, Autoridad e Instituciones"
 #| echo: false
 #| results: asis
@@ -142,8 +145,10 @@ chart.Correlation(datos_democracia)
 
 ## Indicadores de participación política
 
+En la subdimensión de Participación política se incluyen variables relacionadas con participación en instituciones civiles (reuninones religiosas, asociaciones de padres, reuniones de la comunidad), instituciones políticas (partidos políticos, elecciones, protestas) y el interés general en la política. La @fig-correlaciones-participacion muestra la correlación de estas variables.
+
 ```{r}
-#| label: correlaciones-participacion
+#| label: fig-correlaciones-participacion
 #| fig-cap: "Correlaciones Participación Política"
 #| echo: false
 #| results: asis
@@ -162,13 +167,17 @@ datos_participacion <- datos %>%
 chart.Correlation(datos_participacion)
 
 ```
-Se debería eliminrar participación en elecciones, interés en polítca y participación en protestas, debido a sus bajas correlaciones. 
 
+Debido a las bajas correlaciones de participación en elecciones, interés en polítca y participación en protestas, no se considerarán estas variables.
 
 ## Indicadores de Justicia y Corrupción
 
+La subdimensión de Justicia y Corrupción incluye una variable sobre percepción de igualdad de ingresos en el país y percepción de corrupción en el país. La @fig-correlaciones-justicia muestra la correlación entre estas dos variables.
+
+La correlación entre estas dos variables es negativa, baja y significativa (p<0.01).
+
 ```{r}
-#| label: correlaciones-justicia
+#| label: fig-correlaciones-justicia
 #| fig-cap: "Correlaciones Justicia"
 #| echo: false
 #| results: asis
@@ -187,7 +196,11 @@ chart.Correlation(datos_justicia)
 
 ## Análisis Factorial
 
+Tomando en consideración los resultados presentados anteriormente, se estimó una nueva matriz de correlaciones. Estas asociaciones se muestran en la @fig-correlaciones-resumen
+
 ```{r}
+#| label: fig-correlaciones-resumen
+#| fig-cap: "Correlaciones resumen dimensión vertical"
 
 subset <- datos %>%
   ungroup() %>%
@@ -206,12 +219,17 @@ subset <- datos %>%
 
 chart.Correlation(subset)
 ```
+
 - Las correlaciones de las variables de participación son muy bajas o son negativas.
 
-- Tanto igualdad de ingresos como percepción de corrupción no muestran correlaciones fuertes con ninguna variable. 
+- Tanto igualdad de ingresos como percepción de corrupción no muestran correlaciones fuertes con ninguna variable.
+
+Por lo tanto, quitando estas variables, las correlaciones de las variables quedan como se muestra en la @fig-correlaciones-vertical
 
 
 ```{r}
+#| label: fig-correlaciones-vertical
+#| fig-cap: "Correlaciones dimensión vertical"
 
 subset <- datos %>%
   ungroup() %>%
@@ -227,9 +245,35 @@ chart.Correlation(subset)
 ```
 
 ```{r}
-KMO(subset)
+kmo_result <- KMO(subset)
 
-cortest.bartlett(subset)
+# MSA individual por variable
+msa_items <- kmo_result$MSAi
+
+# Nombre de variables
+variables <- names(msa_items)
+
+# MSA overall
+overall <- kmo_result$MSA
+
+# Crear tabla
+kmo_table <- tibble(
+  Variable = c("KMO Overall", variables),
+  MSA = c(round(overall, 3), round(msa_items, 3))
+)
+
+kable(kmo_table, caption = "KMO: índice general y por variable")
+
+
+bartlett_result <- cortest.bartlett(subset)
+
+bartlett_table <- tibble(
+  Statistic = round(bartlett_result$chisq, 3),
+  df = bartlett_result$df,
+  p_value = round(bartlett_result$p.value, 3)
+)
+
+kable(bartlett_table, caption = "Test de esfericidad de Bartlett")
 ```
 
 Tanto el KMO (0,85) como el test de esfercidad de Bartlett indican que los datos son adecuados para un análisis factorial. 
@@ -248,7 +292,7 @@ El análisis paralelo sugiere 2 dimensiones
 m1 <- fa(subset, nfactors = 2, 
    fm = "ml", rotate = "none")
 
-print(m1, cut = 0.4)
+sjPlot::tab_fa(subset, nmbr.fctr = 2, method = "ml", show.comm = TRUE)
 ```
 
 Los indicadores de ajuste son buenos. Sin embargo, la varianza explicada por el factor 2 es de solo 6%, y la varianza explicada total es de solo un 62%. 
@@ -257,12 +301,14 @@ Los indicadores de ajuste son buenos. Sin embargo, la varianza explicada por el 
 m1_rot <- fa(subset, nfactors = 2, 
    fm = "ml", rotate = "oblimin")
 
-print(m1_rot, cut = 0.4)
+sjPlot::tab_fa(subset, nmbr.fctr = 2, method = "ml", rotation = "oblimin", show.comm = TRUE)
 ```
 
 Mejoran los autovalores del factor 2 y da una solución clara. El factor 1 da cuenta de confianza en instituciones y el factor 2 en apoyo/satisfacción a la democracia. 
 
 **Calcular puntajes**
+
+Se estimaron promedios simples para la subdimensión de confianza en instituciones (congreso, poder judicial, partidos políticos y ejecutivo) y para la subdimensión de democracia (Apoyo a la democracia y satisfacción con la democracia).
 
 ```{r echo=F}
 datos <- datos %>%
@@ -273,6 +319,12 @@ datos <- datos %>%
                                               confianza_ejecutivo)),
          sub_democracia = mean_na(mean_na(apoyo_democracia,
                                           satisfaccion_democracia)))
+```
+
+
+```{r echo=F}
+#| label: fig-correlaciones-subdimensiones
+#| fig-cap: "Correlaciones subdimensiones"
 
 
 chart.Correlation(datos %>%
@@ -280,12 +332,13 @@ chart.Correlation(datos %>%
                     # filter(pais!="Haiti") %>%
                     select(sub_confianza_inst, sub_democracia))
 ```
-Ambas subdimensiones tienen una correlación de 0,63. Sin embargo, se debe considerar que esto solo respondería a una definición mínima de cohesión vertical, sin tomar en cuenta dimensiones de participación y justicia. 
+
+En la @fig-correlaciones-subdimensiones se muestra que ambas subdimensiones tienen una correlación de 0,63. Sin embargo, se debe considerar que esto solo respondería a una definición mínima de cohesión vertical, sin tomar en cuenta dimensiones de participación y justicia.
 
 
-## Modelo incluyendo indicadores de la WVS
+## Modelo incluyendo indicadores de la encuesta mundial de valores
 
-Se incluyen indicadores de participación y justicia de la de la Encuesta Mundial de Valores. Para participación se incluyen indicadores de participación en protestas, huelgas y firmar peticiones. Para justicia se incluyen indicadores sobre la importancia de la igualdad de ingresos y del trabajo duro. 
+Se incluyen indicadores de participación y justicia de la Encuesta Mundial de Valores. Para participación se incluyen indicadores de participación en protestas, huelgas y firmar peticiones. Para justicia se incluyen indicadores sobre la importancia de la igualdad de ingresos y del trabajo duro. 
 
 <!-- ```{r} -->
 
@@ -325,9 +378,35 @@ chart.Correlation(subset)
 ```
 
 ```{r}
-subset %>% na.omit() %>% KMO()
+kmo_result <- KMO(subset)
 
-subset %>% na.omit() %>% cortest.bartlett()
+# MSA individual por variable
+msa_items <- kmo_result$MSAi
+
+# Nombre de variables
+variables <- names(msa_items)
+
+# MSA overall
+overall <- kmo_result$MSA
+
+# Crear tabla
+kmo_table <- tibble(
+  Variable = c("KMO Overall", variables),
+  MSA = c(round(overall, 3), round(msa_items, 3))
+)
+
+kable(kmo_table, caption = "KMO: índice general y por variable")
+
+
+bartlett_result <- cortest.bartlett(subset)
+
+bartlett_table <- tibble(
+  Statistic = round(bartlett_result$chisq, 3),
+  df = bartlett_result$df,
+  p_value = round(bartlett_result$p.value, 3)
+)
+
+kable(bartlett_table, caption = "Test de esfericidad de Bartlett")
 
 subset <- na.omit(subset)
 ```
@@ -345,7 +424,7 @@ n_facts <- fa.parallel(subset,
 m2 <- fa(subset, nfactors = 2, 
    fm = "ml", rotate = "oblimin")
 
-print(m2, cut = 0.4)
+sjPlot::tab_fa(subset, nmbr.fctr = 2, method = "ml", rotation = "oblimin", show.comm = TRUE)
 ```
 
 <!-- Firmar Peticiones es una variable compleja. Se prueba un nuevo modelo sin ellas.  -->
@@ -418,9 +497,35 @@ subset <- datos %>%
 chart.Correlation(subset)
 ```
 ```{r}
-KMO(subset)
+kmo_result <- KMO(subset)
 
-cortest.bartlett(subset)
+# MSA individual por variable
+msa_items <- kmo_result$MSAi
+
+# Nombre de variables
+variables <- names(msa_items)
+
+# MSA overall
+overall <- kmo_result$MSA
+
+# Crear tabla
+kmo_table <- tibble(
+  Variable = c("KMO Overall", variables),
+  MSA = c(round(overall, 3), round(msa_items, 3))
+)
+
+kable(kmo_table, caption = "KMO: índice general y por variable")
+
+
+bartlett_result <- cortest.bartlett(subset)
+
+bartlett_table <- tibble(
+  Statistic = round(bartlett_result$chisq, 3),
+  df = bartlett_result$df,
+  p_value = round(bartlett_result$p.value, 3)
+)
+
+kable(bartlett_table, caption = "Test de esfericidad de Bartlett")
 ```
 
 El test KMO y el de esfericidad de Bartlett indican que los datos son adecuados para un análisis factorial. 
@@ -436,7 +541,7 @@ n_facts <- fa.parallel(subset,
 m4 <- fa(subset, nfactors = 3, 
    fm = "ml", rotate = "none")
 
-print(m4, cut = 0.4)
+sjPlot::tab_fa(subset, nmbr.fctr = 3, method = "ml", show.comm = TRUE)
 ```
 
 Buen ajuste. Vamos a rotar para ver si hay una solución clara.
@@ -445,7 +550,7 @@ Buen ajuste. Vamos a rotar para ver si hay una solución clara.
 m4_rot <- fa(subset, nfactors = 3, 
    fm = "ml", rotate = "oblimin")
 
-print(m4_rot, cut = 0.4)
+sjPlot::tab_fa(subset, nmbr.fctr = 3, method = "ml", rotation = "oblimin", show.comm = TRUE)
 ```
 
 Se mantienen los factores relacionados a instituciones y democracia. El nuevo indicador aparece como un tercer factor independiente que explica el 16% de la varianza total. 

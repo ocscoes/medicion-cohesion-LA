@@ -165,35 +165,74 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="cohesion-general_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p>Como propuesta de medición, en este apartado se intenta elaborar un resumen de ambas dimensiones (horizontal y vertical) que permita dar a conocer la relación existente entre las subdimensiones y sus indicadores. La <a href="#fig-correlaciones-general" class="quarto-xref">Figura&nbsp;<span>4.1</span></a> muestra la correlación enre estas subdimensiones.</p>
+<div id="fig-correlaciones-general" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-correlaciones-general-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cohesion-general_files/figure-html/fig-correlaciones-general-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-correlaciones-general-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4.1: Correlaciones subdimensiones de confianza instituciones, democracia, justicia distributiva, confianza social y seguridad
+</figcaption>
 </figure>
 </div>
-</div>
-</div>
+<p>El test KMO (general=0.7) y el test de esfericidad de Bartlett muestran que en general existe un buen ajuste en los datos.</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Kaiser-Meyer-Olkin factor adequacy
-Call: KMO(r = subset)
-Overall MSA =  0,7
-MSA for each item = 
-   sub_confianza_inst        sub_democracia justicia_distribucion 
-                 0,78                  0,68                  0,56 
-        sub_confianza         sub_seguridad 
-                 0,67                  0,77 </code></pre>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>KMO: índice general y por variable</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: right;">MSA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">KMO Overall</td>
+<td style="text-align: right;">0,704</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sub_confianza_inst</td>
+<td style="text-align: right;">0,776</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sub_democracia</td>
+<td style="text-align: right;">0,683</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">justicia_distribucion</td>
+<td style="text-align: right;">0,561</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sub_confianza</td>
+<td style="text-align: right;">0,671</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sub_seguridad</td>
+<td style="text-align: right;">0,773</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$chisq
-[1] 354,2007
-
-$p.value
-[1] 0,0000000000000000000000000000000000000000000000000000000000000000000005114842
-
-$df
-[1] 10</code></pre>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Test de esfericidad de Bartlett</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Statistic</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">p_value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">354,201</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="cell">
@@ -208,104 +247,136 @@ $df
 <pre><code>Parallel analysis suggests that the number of factors =  2  and the number of components =  NA </code></pre>
 </div>
 </div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Factor Analysis using method =  ml
-Call: fa(r = subset, nfactors = 2, rotate = "none", fm = "ml")
-Standardized loadings (pattern matrix) based upon correlation matrix
-                       ML1   ML2   h2    u2 com
-sub_confianza_inst    0,41  0,55 0,47 0,526 1,9
-sub_democracia        0,57  0,67 0,77 0,228 2,0
-justicia_distribucion       0,48 0,23 0,765 1,0
-sub_confianza         1,00       1,00 0,005 1,0
-sub_seguridad         0,54       0,32 0,681 1,2
-
-                       ML1  ML2
-SS loadings           1,78 1,01
-Proportion Var        0,36 0,20
-Cumulative Var        0,36 0,56
-Proportion Explained  0,64 0,36
-Cumulative Proportion 0,64 1,00
-
-Mean item complexity =  1,4
-Test of the hypothesis that 2 factors are sufficient.
-
-df null model =  10  with the objective function =  1,4 with Chi Square =  354,2
-df of  the model are 1  and the objective function was  0 
-
-The root mean square of the residuals (RMSR) is  0,01 
-The df corrected root mean square of the residuals is  0,04 
-
-The harmonic n.obs is  215 with the empirical chi square  0,58  with prob &lt;  0,45 
-The total n.obs was  256  with Likelihood Chi Square =  1,05  with prob &lt;  0,3 
-
-Tucker Lewis Index of factoring reliability =  0,998
-RMSEA index =  0,014  and the 90 % confidence intervals are  0 0,167
-BIC =  -4,49
-Fit based upon off diagonal values = 1
-Measures of factor score adequacy             
-                                                   ML1  ML2
-Correlation of (regression) scores with factors   1,00 0,86
-Multiple R square of scores with factors          1,00 0,74
-Minimum correlation of possible factor scores     0,99 0,49</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Factor Analysis using method =  ml
-Call: fa(r = subset, nfactors = 2, rotate = "oblimin", fm = "ml")
-Standardized loadings (pattern matrix) based upon correlation matrix
-                       ML2   ML1   h2    u2 com
-sub_confianza_inst    0,67       0,47 0,526 1,0
-sub_democracia        0,81       0,77 0,228 1,0
-justicia_distribucion 0,57       0,23 0,765 1,5
-sub_confianza               0,99 1,00 0,005 1,0
-sub_seguridad               0,41 0,32 0,681 1,5
-
-                       ML2  ML1
-SS loadings           1,52 1,28
-Proportion Var        0,30 0,26
-Cumulative Var        0,30 0,56
-Proportion Explained  0,54 0,46
-Cumulative Proportion 0,54 1,00
-
- With factor correlations of 
-     ML2  ML1
-ML2 1,00 0,53
-ML1 0,53 1,00
-
-Mean item complexity =  1,2
-Test of the hypothesis that 2 factors are sufficient.
-
-df null model =  10  with the objective function =  1,4 with Chi Square =  354,2
-df of  the model are 1  and the objective function was  0 
-
-The root mean square of the residuals (RMSR) is  0,01 
-The df corrected root mean square of the residuals is  0,04 
-
-The harmonic n.obs is  215 with the empirical chi square  0,58  with prob &lt;  0,45 
-The total n.obs was  256  with Likelihood Chi Square =  1,05  with prob &lt;  0,3 
-
-Tucker Lewis Index of factoring reliability =  0,998
-RMSEA index =  0,014  and the 90 % confidence intervals are  0 0,167
-BIC =  -4,49
-Fit based upon off diagonal values = 1
-Measures of factor score adequacy             
-                                                   ML2  ML1
-Correlation of (regression) scores with factors   0,91 1,00
-Multiple R square of scores with factors          0,82 0,99
-Minimum correlation of possible factor scores     0,65 0,99</code></pre>
-</div>
-</div>
+<p>El análisis paralelo sugiere la existencia de dos factores.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="cohesion-general_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Factor Analysis</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="border-top: double black; padding: 0.2cm">&nbsp;</td>
+<td data-quarto-table-cell-role="th" style="border-top: double black; padding: 0.2cm">Factor 1</td>
+<td data-quarto-table-cell-role="th" style="border-top: double black; padding: 0.2cm">Factor 2</td>
+<td data-quarto-table-cell-role="th" style="border-top: double black; padding: 0.2cm; font-style: italic; color: #666666">Communality</td>
+</tr>
+<tr class="even">
+<td style="border-top: 1px solid black">sub_confianza_inst</td>
+<td style="text-align: center; padding: 0.2cm; color: #cccccc; border-top: 1px solid black;">0.23</td>
+<td style="text-align: center; padding: 0.2cm; border-top: 1px solid black;">0.54</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; color: #666666; border-top: 1px solid black;">0.47</td>
+</tr>
+<tr class="odd">
+<td>sub_democracia</td>
+<td style="text-align: center; padding: 0.2cm; color: #cccccc;">0.35</td>
+<td style="text-align: center; padding: 0.2cm;">0.64</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; color: #666666;">0.77</td>
+</tr>
+<tr class="even">
+<td>justicia_distribucion</td>
+<td style="text-align: center; padding: 0.2cm; color: #cccccc;">-0.17</td>
+<td style="text-align: center; padding: 0.2cm;">0.55</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; color: #666666;">0.23</td>
+</tr>
+<tr class="odd">
+<td>sub_confianza</td>
+<td style="text-align: center; padding: 0.2cm;">1.10</td>
+<td style="text-align: center; padding: 0.2cm; color: #cccccc;">-0.24</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; color: #666666;">0.99</td>
+</tr>
+<tr class="even">
+<td>sub_seguridad</td>
+<td style="text-align: center; padding: 0.2cm;">0.52</td>
+<td style="text-align: center; padding: 0.2cm; color: #cccccc;">0.08</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; color: #666666;">0.32</td>
+</tr>
+<tr class="odd">
+<td style="padding: 0.2cm; font-style: italic">Total Communalities</td>
+<td colspan="2" style="text-align: center; padding: 0.2cm; font-style: italic;"></td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic;">2.80</td>
+</tr>
+<tr class="even">
+<td style="padding: 0.2cm; font-style: italic; border-bottom: double">Cronbach's α</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; border-bottom: double;">0.70</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; border-bottom: double;">0.66</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; border-bottom: double;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>El AFE muestra dos factores con las subdimensiones adecuadas para las dimensiones horizontal y verticual.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Factor Analysis</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="border-top: double black; padding: 0.2cm">&nbsp;</td>
+<td data-quarto-table-cell-role="th" style="border-top: double black; padding: 0.2cm">Factor 1</td>
+<td data-quarto-table-cell-role="th" style="border-top: double black; padding: 0.2cm">Factor 2</td>
+<td data-quarto-table-cell-role="th" style="border-top: double black; padding: 0.2cm; font-style: italic; color: #666666">Communality</td>
+</tr>
+<tr class="even">
+<td style="border-top: 1px solid black">sub_confianza_inst</td>
+<td style="text-align: center; padding: 0.2cm; border-top: 1px solid black;">0.67</td>
+<td style="text-align: center; padding: 0.2cm; color: #cccccc; border-top: 1px solid black;">0.04</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; color: #666666; border-top: 1px solid black;">0.47</td>
+</tr>
+<tr class="odd">
+<td>sub_democracia</td>
+<td style="text-align: center; padding: 0.2cm;">0.81</td>
+<td style="text-align: center; padding: 0.2cm; color: #cccccc;">0.12</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; color: #666666;">0.77</td>
+</tr>
+<tr class="even">
+<td>justicia_distribucion</td>
+<td style="text-align: center; padding: 0.2cm;">0.57</td>
+<td style="text-align: center; padding: 0.2cm; color: #cccccc;">-0.29</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; color: #666666;">0.23</td>
+</tr>
+<tr class="odd">
+<td>sub_confianza</td>
+<td style="text-align: center; padding: 0.2cm; color: #cccccc;">0.02</td>
+<td style="text-align: center; padding: 0.2cm;">0.99</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; color: #666666;">0.99</td>
+</tr>
+<tr class="even">
+<td>sub_seguridad</td>
+<td style="text-align: center; padding: 0.2cm; color: #cccccc;">0.22</td>
+<td style="text-align: center; padding: 0.2cm;">0.41</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; color: #666666;">0.32</td>
+</tr>
+<tr class="odd">
+<td style="padding: 0.2cm; font-style: italic">Total Communalities</td>
+<td colspan="2" style="text-align: center; padding: 0.2cm; font-style: italic;"></td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic;">2.80</td>
+</tr>
+<tr class="even">
+<td style="padding: 0.2cm; font-style: italic; border-bottom: double">Cronbach's α</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; border-bottom: double;">0.66</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; border-bottom: double;">0.70</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; border-bottom: double;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Luego de rotar la estimación del AFE, el ajuste mejora.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-correlacion-general" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-correlacion-general-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cohesion-general_files/figure-html/fig-correlacion-general-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-correlacion-general-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4.2: Correlación entre Dimensión Horizontal y Dimensión Vertical
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>Finalmente, la <a href="#fig-correlacion-general" class="quarto-xref">Figura&nbsp;<span>4.2</span></a> muestra la asociación entre ambas dimensiones. Esta correlación es alta y es significativa (r=0.61; p&lt;0.001). Esto da cuenta de que, en general, ambas dimensiones de la cohesión social varían de la misma forma.</p>
 
 
 
