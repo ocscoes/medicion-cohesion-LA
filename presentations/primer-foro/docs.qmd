@@ -1,0 +1,118 @@
+---
+format:
+  revealjs:
+    logo: images/logo-ocs.jpeg
+    slide-number: true
+    theme: [ocs.scss]
+    title-slide-attributes:
+      visibility: false
+    transition: zoom
+    transition-speed: slow
+# data-background-image: images/cover.jpg
+# data-background-size: cover
+    auto-play-media: true
+editor: visual
+---
+## Desafíos de la Cohesión social en Chile y América Latina
+
+### *Observatorio de Cohesión Social*
+30 de julio del 2025
+
+![](images/cepal.jpg){width="20%" fig-align="center"}
+![](images/ocs-old.jpg){width="20%" fig-align="center"}
+
+
+## Proyecto
+
+::::: columns
+::: {.column width="50%" style="font-size: 25px;"}
+
+- El Observatorio de Cohesión Social (OCS) es un proyecto enmarcado en el FONDAP° 1523A0005: Centro de Estudios de Conflicto y Cohesión Social
+
+- Surge el año [...] con el objetivo de contribuir al análisis de la cohesión social a través de la investigación empírica
+
+- A lo largo de los años, el OCS ha generado conocimiento sobre las dinámicas de la cohesión social, así como sobre las maneras en que esta ha sido medida. 
+:::
+
+::: {.column width="50%"}
+![](images/coes.png){width="70%"}
+:::
+:::::
+
+## Antecedentes 
+
+::: {.incremental .highlight-last style="font-size: 35px;"}
+
+-   Importancia de la cohesión social para la comprensión de la sociedad (relevancia teórica y metodológica).
+
+-   Enfoque especial a la cohesión social en América Latina.
+
+-   Últimos saberes a partir de la revisión de literatura.
+
+:::
+
+## Propuesta 
+
+::: {.incremental .highlight-last style="font-size: 35px;"}
+
+-   A partir de la definición de cohesión social de Chan et al. (2006), y de estudios previos sobre su medición (Dragolov et al., 2016; Castillo et al., 2021), se desarrolló un **índice de cohesión social de América Latina**. 
+
+-   Contempla dos dimensiones principales: cohesión vertical y cohesión horizontal. 
+
+-   Este instrumento permite realizar análisis comparativos entre países y entre distintos momentos en el tiempo.
+
+:::
+
+## Datos
+
+::: {.incremental .highlight-last style="font-size: 35px;"}
+
+-   Fuente de datos principal: Latin American Public Opinion Project (LAPOP) 
+
+-   Aplicada desde el 2004 en 34 países. Hasta la fecha, el estudio tiene 10 olas.
+
+-   A modo de complementar los datos, se integraron variables de Latinobarómetro.
+
+:::
+
+## Métodos
+
+::: {.incremental .highlight-last style="font-size: 35px;"}
+
+-   Se estimaron correlaciones entre las variables que conforman cada subíndice para evaluar su asociación.  
+
+-   Posteriormente, se realizó un análisis factorial confirmatorio a cada subíndice para validar la estructura teórica de los constructos. 
+
+:::
+
+# Resultados 
+
+## 
+
+### Cohesión social en la actualidad
+
+![](images/cohesion-cross.jpg)
+
+## 
+
+### Cohesión social a lo largo del tiempo
+
+![](images/cohesion-long.jpg)
+
+## 
+
+### Factores estructurales asociados a la cohesión social 
+
+![](images/cohesion-bi.jpg)
+
+## 
+
+### ¿Qué podemos decir de la cohesión social en América Latina?
+
+- Problematizar los resultados, resaltando los avances en la región pero también darle importancia a los desafíos actuales que se pueden observar a partir del visualizador
+
+## Cierre
+
+- Mencionar que el visualizador queda a disposición pública, invitando a todos los oyentes a utilizarlo 
+
+- Página del OCS para encontrar esta herramienta y más información sobre cohesión social: [https://ocs-coes.com](https://ocs-coes.com)
