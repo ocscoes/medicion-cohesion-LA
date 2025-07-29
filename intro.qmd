@@ -1,9 +1,28 @@
-## Introducción
+# Introducción
 
-Este documento tiene como objetivo presentar un índice elaborado por el OBservatorio de Cohesión Social de COES para la medición de la cohesión social enfocado en la región latinoamericana. Para ello, se presentan los puntos de referencia principales 
+Este documento tiene como objetivo presentar un índice elaborado por el Observatorio de Cohesión Social de COES para la medición de la cohesión social enfocado en la región latinoamericana. Para ello, se presentan los puntos de referencia principales 
 
 A partir de todo lo anterior, se espera que este documento pueda servir como insumo para aquellos que deseen utilizar el visualizador del observatorio, con tal de aprovechar al máximo las posibilidades que ofrecen los datos para el análisis longitudinal y/o comparado en los países de América Latina. 
 
+## Esquema de Cohesión Social
+
+Esta propuesta de medición de cohesión social toma como referencia la conceptualización de Chan et al. (2006) en dos dimensiones generales: (1) Vertical y (2) Horizontal.
+
+“La cohesión social es un estado de cosas que concierte tanto a las interacciones verticales como horizontales entre los miembros de la sociedad, caracterizado por un conjunto de actitudes y normas que incluyen la confianza, el sentido de pertenencia y la voluntad de participar y ayudar, así como sus manifestaciones conductuales” (Chan et al., 2006, p. 290)
+
+![Cohesión Social](https://ocscoes.github.io/presentaciones/presentaciones-ocs/primer-foro/images/esquema.png)
+
+### Cohesión Horizontal
+
+La dimensión horizontal está dirigida hacia la cohesión dentro de la sociedad civil y posee indicadores subjetivos y objetivos. Los indicadores subjetivos incluyen la cohesión entre los ciudadanos individuales, así como la cohesión entre diferentes grupos sociales, mientras que los indicadores objetivos incluyen cómo se manifiesta la cohesión, a partir del grado de participación social de las personas.
+
+![Cohesión Horizontal](https://ocscoes.github.io/presentaciones/presentaciones-ocs/primer-foro/images/horizontal.png)
+
+### Cohesión Vertical
+
+La dimensión vertical está dirigida hacia la cohesión entre los ciudadanos (o sociedad civil) y el Estado y posee indicadores subjetivos y objetivos. Los indicadores subjetivos miden la confianza de las personas hacia las principales autoridades públicas y hacia las instituciones políticas y sociales, mientras que los indicadores objetivos están asociados con las conductas de las personas, a partir de la participación política.
+
+![Cohesión vertical](https://ocscoes.github.io/presentaciones/presentaciones-ocs/primer-foro/images/vertical.png)
 
 ## Países participantes y años analizados
 
@@ -20,9 +39,9 @@ options(scipen=999)
 st_options(lang='es')
 options(OutDec=",")
 
-# 3. Funcióm media sin NAs
+# 3. Función media sin NAs
 ## Descripción:
-## Simple función que omite el agumento de rm.na=TRUE.
+## Simple función que omite el argumento de rm.na=TRUE.
 # Argumentos:
 ## ... = Valores a promediar.
 mean_na <- function(...) {

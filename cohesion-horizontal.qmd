@@ -842,3 +842,52 @@ datos <- datos %>%
 save(datos, file="input/data/cohesion_horizontal.RData")
 ```
 
+## Propuesta final
+
+Finalmente, considerando los análisis previos, proponemos utilizar dos subdimensiones para medir cohesión horizontal:
+
+- Confianza interpersonal: Medida a partir del indicador de confianza en terceros
+
+- Seguridad: Medida a partir de las variables de seguridad objetiva (victima de delitos) y seguridad subjetiva (percepción de seguridad)
+
+```{r}
+
+datos <- datos %>%
+  group_by(wave,pais)%>%
+  mutate(sub_confianza = mean_na(mean_na(it1)),
+         sub_seguridad = mean_na(mean_na(aoj11, vic1ext)))
+
+
+calidad_year <- datos %>%
+  as.data.frame %>%
+  select(-c(pais, wave)) %>%
+  mutate(across(everything(), ~ !is.na(.))) %>%
+  as.data.frame() %>%
+  mutate(
+    cohesion_horizontal   = ifelse(rowSums(cbind(sub_confianza, sub_seguridad)) > 1, FALSE, TRUE)) %>%
+  select(c(cohesion_horizontal)) %>%
+  mutate(
+    pais = datos$pais,
+    wave = datos$wave
+  ) %>%
+  select(pais,wave,everything())
+
+
+for(i in 1:nrow(datos)){
+  # print(i)
+  for(x in names(calidad_year)[3]){
+    if(calidad_year[i,x]){
+      datos[i,x] <- NA
+    }
+  }
+}
+
+datos <- datos %>%
+  group_by(wave,pais)%>%
+  mutate(cohesion_horizontal= mean_na(mean_na(sub_confianza, sub_seguridad)))
+
+chart.Correlation(datos %>%
+                    ungroup() %>%
+                    # filter(pais!="Haiti") %>%
+                    select(sub_confianza, sub_seguridad))
+```

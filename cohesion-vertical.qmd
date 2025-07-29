@@ -652,3 +652,19 @@ save(datos, file="input/data/cohesion_vertical.RData")
 
 ```
 
+## Propuesta final
+
+Finalmente, considerando los análisis previos, proponemos utilizar tres subdimensiones para medir cohesión vertical:
+
+- Confianza en instituciones: Medida a partir de las variables de confianza en el congreso, el poder judicial y los partidos políticos
+
+- Actitudes hacia la democracia: Medida a partir de las variables de Apoyo a la democracia y de satisfacción con la democracia
+
+- Justicia distributiva: Medida a partir de la variable que pregunta qué tan justa se percibe la distribución de ingresos en el país
+
+```{r}
+chart.Correlation(datos %>%
+                    ungroup() %>%
+                    # filter(pais!="Haiti") %>%
+                    select(sub_confianza_inst, sub_democracia, justicia_distribucion))
+```
